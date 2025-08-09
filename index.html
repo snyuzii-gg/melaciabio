@@ -1,576 +1,382 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SNYUZII — Bio</title>
-  <meta name="description" content="Oficjalna strona SNYUZII – stream, social media, radyjko i partnerzy." />
-  <meta property="og:image" content="https://i.imgur.com/eDYyA4G.png" />
-  <meta property="og:image:width" content="1024" />
-  <meta property="og:image:height" content="1024" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg-image: url('https://images.unsplash.com/photo-1516280030429-27679b3dc9cf?q=80&w=2100&auto=format&fit=crop');
-      --accent:#7ecbff; --accent-2:#4f87ff; --text:#eaf7ff; --muted:#a6b3c2;
-      --card:rgba(17,21,32,0.62); --card-strong:rgba(10,12,20,0.8);
-      --glass: blur(10px) saturate(120%); --radius:18px; --maxw:1250px; /* + większa szerokość strony */
-      --shadow-neon:0 0 12px var(--accent), 0 0 32px color-mix(in srgb, var(--accent) 60%, transparent);
-      --glow-strong:0 0 18px var(--accent), 0 0 48px var(--accent);
-      --live-red:#ff3b3b; --offline:#7a8594;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
-      background:#0b0f17 fixed center/cover no-repeat var(--bg-image);
-      overflow-x:hidden;
-      transition: background-position .15s ease-out; /* dla efektu parallax */
-    }
-    body::before{content:"";position:fixed;inset:0;pointer-events:none;
-      background:radial-gradient(1200px 800px at 70% 10%,rgba(255,255,255,.06),transparent 60%),
-                 radial-gradient(900px 700px at 10% 30%,rgba(72,150,255,.08),transparent 60%),
-                 linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.8));z-index:-1}
-    a{color:inherit;text-decoration:none}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>melapustelnik — bio</title>
+<meta name="description" content="Oficjalna strona melapustelnik – stream, social media, radyjko lofi i partnerzy." />
+<meta property="og:image" content="https://i.imgur.com/3a3Qk7Z.png" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Pastel / anime vibe */
+  --pink:#ff7ac8; --pink-2:#ffafe3; --lav:#b794f6; --mint:#a7ffea;
+  --text:#fff7fb; --muted:#f2d9ee; --ink:#190e20;
+  --bg-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2100&auto=format&fit=crop'); /* różowe chmurki */
+  --glass: blur(12px) saturate(120%);
+  --card: rgba(35,18,44,.55);
+  --line: rgba(255,170,230,.35);
+  --shadow: 0 12px 40px rgba(0,0,0,.35);
+  --radius: 22px; --maxw:1180px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text); background:#120916 fixed center/cover no-repeat var(--bg-image);
+  overflow-x:hidden; transform: translate3d(0,0,0);
+}
+body::before{
+  content:""; position:fixed; inset:-10%; pointer-events:none; z-index:-2;
+  background:
+    radial-gradient(1200px 800px at 70% 10%, rgba(255,170,230,.08), transparent 60%),
+    radial-gradient(900px 700px at 10% 30%, rgba(183,148,246,.10), transparent 60%),
+    linear-gradient(to bottom, rgba(18,9,22,.32), rgba(13,6,18,.72));
+  filter: saturate(112%);
+}
+a{color:inherit;text-decoration:none}
 
-    /* TICKER + LIVE badge */
-    .ticker{position:sticky;top:0;z-index:50;backdrop-filter:var(--glass);
-      background:linear-gradient(90deg,rgba(12,18,30,.95),rgba(12,18,30,.75));
-      border-bottom:1px solid rgba(126,203,255,.35);box-shadow:0 1px 0 rgba(126,203,255,.25);
-      min-height:56px;display:flex;align-items:center;gap:14px}
-    .ticker .label{margin-left:12px; font-weight:900; letter-spacing:.14em; font-size:12px; color:#fff; text-shadow: 0 0 12px var(--accent);
-      display:flex; flex-direction:column; align-items:flex-start; line-height:1}
-    .liveBadge{margin-top:4px; font-size:12px; font-weight:800; display:flex; align-items:center; gap:8px}
-    .liveBadge .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
-    .liveBadge.on{color:var(--live-red)}
-    .liveBadge.on .dot{background:var(--live-red); box-shadow:0 0 10px var(--live-red),0 0 20px var(--live-red); animation:blink 1s infinite}
-    .liveBadge.off{color:var(--offline)}
-    .liveBadge.off .dot{background:var(--offline)}
-    @keyframes blink{0%,100%{opacity:.2}50%{opacity:1}}
+/* NEWS */
+.ticker{
+  position:sticky; top:0; z-index:50; backdrop-filter:var(--glass);
+  background:linear-gradient(90deg, rgba(30,18,40,.95), rgba(30,18,40,.75));
+  border-bottom:1px solid var(--line); box-shadow:0 1px 0 rgba(255,170,230,.18);
+  min-height:56px; display:flex; align-items:center; gap:14px
+}
+.ticker .label{margin-left:12px; font-weight:900; letter-spacing:.16em; font-size:12px; color:#fff; text-shadow: 0 0 12px var(--pink)}
+.ticker .mask{overflow:hidden; flex:1}
+.ticker .track{display:flex; width:max-content; animation: marquee2 28s linear infinite}
+.ticker .row{display:flex; gap:26px; padding:0 12px}
+.ticker .item{opacity:.96; background: rgba(255,170,230,.08); padding:6px 12px; border-radius:999px; border:1px solid rgba(255,170,230,.25); box-shadow:0 0 8px rgba(255,170,230,.18)}
+@keyframes marquee2{from{transform:translateX(0)} to{transform:translateX(-50%)}}
 
-    .ticker .mask{overflow:hidden; flex:1}
-    .ticker .track{display:flex; width:max-content; animation: marquee2 28s linear infinite}
-    .ticker .row{display:flex; gap:26px; padding:0 12px}
-    .ticker .item{opacity:.96; background: rgba(8,14,24,.8); padding:6px 12px; border-radius:999px; border:1px solid rgba(126,203,255,.25); box-shadow: 0 0 8px rgba(126,203,255,.15)}
-    @keyframes marquee2{ from{ transform: translateX(0)} to{ transform: translateX(-50%)} }
+main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
 
-    main{max-width:var(--maxw); margin:64px auto 140px; padding:0 18px}
+/* LOGO – bardziej “kawaii” */
+.logo{margin:60px auto 18px; text-align:center; position:relative; user-select:none}
+.logo h1{
+  font-family: Kalam, Inter, sans-serif;
+  font-size: clamp(46px, 9vw, 88px); font-weight:900; letter-spacing:.01em;
+  color:#fff; text-shadow: 0 0 22px var(--pink), 0 0 46px var(--pink-2);
+}
+.sparkles{position:absolute; inset:0; pointer-events:none}
+.sparkles i{position:absolute; width:7px; height:7px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--mint));
+  box-shadow:0 0 10px var(--mint), 0 0 22px var(--mint);
+  animation: twinkle 2.4s ease-in-out infinite; opacity:.95}
+@keyframes twinkle{0%,100%{transform:scale(.6); opacity:.5} 50%{transform:scale(1.2); opacity:1}}
+.subtitle{margin-top:6px; font-size:13px; color:var(--muted); letter-spacing:.08em}
 
-    /* LOGO */
-    .logo{margin:60px auto 24px; text-align:center; position:relative; user-select:none}
-    .logo h1{ font-family: Orbitron, Inter, sans-serif; font-size: clamp(42px, 8vw, 82px); font-weight: 900; letter-spacing: .06em; color:#fff; text-shadow: var(--glow-strong); filter: drop-shadow(0 4px 24px rgba(126,203,255,.25));}
-    .sparkles{position:absolute; inset:0; pointer-events:none}
-    .sparkles i{position:absolute; width:6px; height:6px; background: var(--accent); border-radius:50%; box-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent); animation: twinkle 2.6s ease-in-out infinite; opacity:.9}
-    @keyframes twinkle{ 0%,100%{transform:scale(.6); opacity:.5} 50%{transform:scale(1.3); opacity:1} }
+/* SOCIALS w “pigułkach” */
+.socials{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin: 22px 0 44px}
+.chip{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:16px;
+  border:1px solid var(--line); background: rgba(255,170,230,.10);
+  backdrop-filter:var(--glass); transition:.25s transform,.2s box-shadow}
+.chip:hover{transform:translateY(-2px) scale(1.06); box-shadow: 0 0 14px rgba(255,170,230,.45)}
+.chip img{width:18px; height:18px; object-fit:contain}
 
-    /* SOCIALS */
-    .socials{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin: 24px 0 46px}
-    .chip{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; border:1px solid rgba(168,255,255,.2); background: rgba(11,16,26,.55); backdrop-filter: var(--glass); transition:.25s transform, .2s box-shadow}
-    .chip:hover{transform:translateY(-2px) scale(1.06); box-shadow: var(--shadow-neon)}
-    .chip img{width:18px; height:18px; object-fit:contain}
+/* KARTY / SEKCJE */
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); backdrop-filter:var(--glass); overflow:hidden}
+.section{margin:42px 0}
+.zone{display:inline-block; margin:30px 0 10px; font-size:12px; font-weight:900; letter-spacing:.22em; color:#ffe4f4; padding:6px 10px; border:1px solid var(--line); border-radius:999px; background: linear-gradient(180deg, rgba(255,170,230,.14), rgba(255,170,230,.06)); box-shadow: 0 0 14px rgba(255,170,230,.22)}
+.zone::before{content:"✦"; margin-right:8px; color:var(--pink)}
 
-    /* CARDS / GRID */
-    .card{background:var(--card); border:1px solid rgba(168,255,255,.18); border-radius:var(--radius); box-shadow:0 12px 40px rgba(0,0,0,.35); backdrop-filter:var(--glass); overflow:hidden}
-    .section{margin:46px 0}
+/* STREAM + CHAT – inny rozkład */
+.grid{display:grid; gap:24px}
+@media(min-width: 980px){ .grid.stream{grid-template-columns: 1.65fr 1fr} }
+.frame{aspect-ratio:16/9; width:100%; border-radius:18px; border:2px solid rgba(255,170,230,.45); box-shadow:0 0 18px rgba(255,170,230,.3); overflow:hidden; background:#000}
+.frame iframe{display:block; width:100%; height:100%; border:0}
 
-    .zone{display:inline-block; margin:34px 0 10px; text-align:left; font-size:12px; font-weight:900; letter-spacing:.22em; color:#eaf6ff; padding:6px 10px; border:1px solid rgba(126,203,255,.35); border-radius:999px; background: linear-gradient(180deg, rgba(10,16,26,.85), rgba(10,16,26,.55)); box-shadow: 0 0 14px rgba(126,203,255,.2)}
-    .zone::before{content:""; display:inline-block; width:10px; height:10px; margin-right:8px; border-radius:3px; background: var(--accent); box-shadow:0 0 12px var(--accent)}
+/* Donate mini pod playerem */
+.mini-donate{text-align:center; padding:10px; background:linear-gradient(180deg, rgba(255,170,230,.10), rgba(255,170,230,.05)); border-top:1px solid var(--line)}
+.mini-btn{display:inline-block; font-weight:900; letter-spacing:.05em; padding:11px 22px; border-radius:14px; background: linear-gradient(135deg, #ff7ac8, #b794f6); color:#120916; border:1px solid #ffd2f2; box-shadow: 0 8px 30px rgba(255,122,200,.35); transition:.18s transform,.18s filter}
+.mini-btn:hover{ transform: translateY(-1px) scale(1.03); filter:brightness(1.05) }
+.pay-note{font-size:11px; color:var(--muted); margin-top:6px; line-height:1.35}
+.chat-note{font-size:11px; color:var(--muted); margin-top:-16px; margin-bottom:10px}
+@media(min-width:980px){ .chat-note{ grid-column:2; text-align:left; padding-left:4px } }
+@media(max-width:979px){ .chat-note{ margin-top:8px; margin-bottom:6px; font-size:10.5px } }
 
-    /* STREAM + CHAT (trochę większe) */
-    .grid{display:grid; gap:24px}
-    @media(min-width: 980px){ .grid.stream{grid-template-columns: 1.8fr 1fr} } /* szerzej */
-    .frame{aspect-ratio:16/9; width:100%; border-radius:calc(var(--radius) - 2px); border:2px solid rgba(168,255,255,.45); box-shadow: var(--shadow-neon); overflow:hidden; background: #000}
-    .frame iframe{display:block; width:100%; height:100%; border:0}
+/* RADIO (lofi) */
+.radio{display:flex; align-items:center; gap:16px; padding:14px}
+.radio .cover{width:60px; height:60px; border-radius:14px; background:#1f1029; border:1px solid var(--line); overflow:hidden; flex:0 0 auto}
+.radio .meta{flex:1; min-width:0}
+.radio h3{margin:0 0 4px; font-size:18px; font-family:Kalam, Inter, sans-serif}
+.radio .marquee{font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; position:relative}
+.radio .marquee span{display:inline-block; padding-left:100%; animation: marquee 14s linear infinite}
+@keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-100%)}}
+.radio .controls{display:flex; gap:10px}
+.btn{display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; border:2px solid rgba(255,170,230,.45); box-shadow:0 0 16px rgba(255,170,230,.35); background: rgba(255,170,230,.10); cursor:pointer; transition:.2s transform}
+.btn:hover{transform: scale(1.07)}
+.btn svg{width:20px; height:20px; fill:var(--pink)}
 
-    /* mini DONATE pod playerem */
-    .mini-donate{
-      text-align:center; padding:10px;
-      background:linear-gradient(180deg, rgba(10,16,26,.65), rgba(10,16,26,.35));
-      border-top:1px solid rgba(168,255,255,.18);
-    }
-    .mini-btn{
-      display:inline-block; font-size:13px; padding:10px 18px; border-radius:12px;
-      background: rgba(11,16,26,.6); border:1px solid rgba(126,203,255,.45);
-      color:var(--text); text-decoration:none; letter-spacing:.04em; font-weight:800;
-      box-shadow: 0 0 8px rgba(126,203,255,.18);
-      transition:.18s transform, .18s box-shadow;
-    }
-    .mini-btn:hover{ transform:translateY(-1px) scale(1.03); box-shadow: var(--shadow-neon); }
-    .pay-note{font-size:11px; color:var(--muted); margin-top:6px; line-height:1.35}
+/* PARTNERZY */
+.partners{display:grid; gap:16px}
+@media(min-width: 820px){ .partners{grid-template-columns: repeat(2, 1fr)} }
+.partner{display:flex; gap:16px; align-items:center; padding:14px}
+.partner img{width:64px; height:64px; object-fit:cover; border-radius:14px; border:1px solid var(--line)}
+.partner .meta{flex:1; min-width:0}
+.partner .cta{margin-left:auto}
+.button{border:1.5px solid rgba(255,170,230,.6); padding:10px 14px; border-radius:999px; box-shadow:0 0 16px rgba(255,170,230,.35); transition:transform .18s ease-out; background:rgba(255,170,230,.10)}
+.button:hover{transform:scale(1.06)}
 
-    /* Mały napis pod czatem */
-    .chat-note{
-      font-size:11px; color:var(--muted);
-      margin-top:-16px; margin-bottom:10px;
-    }
-    @media(min-width:980px){
-      .chat-note{ grid-column:2; text-align:left; padding-left:4px; }
-    }
-    @media(max-width:979px){
-      .chat-note{ margin-top:8px; margin-bottom:6px; font-size:10.5px }
-    }
+/* Kontakt + footer */
+.contact{font-size:12px; color:var(--muted); text-align:center; line-height:1.8}
+.powered{margin-top:16px; position:relative; overflow:hidden; border-radius:var(--radius); text-align:center; padding:14px; font-size:12px; color:#ffe8f7; background: linear-gradient(180deg, rgba(255,170,230,.16), rgba(255,170,230,.08)); border:1px solid var(--line)}
+.powered a{color:#ffe8f7; text-decoration:underline; text-underline-offset:3px}
+.powered::after{content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,170,230,.55), transparent); transform: translateX(-100%); animation: scan 4.5s infinite}
+@keyframes scan{0%{transform:translateX(-100%)} 60%{transform:translateX(100%)} 100%{transform:translateX(100%)}}
 
-    /* RADIO */
-    .radio{display:flex; align-items:center; gap:16px; padding:14px}
-    .radio .cover{width:56px; height:56px; border-radius:10px; background:#0f1624; border:1px solid rgba(168,255,255,.25); overflow:hidden; flex: 0 0 auto}
-    .radio .meta{flex:1; min-width:0}
-    .radio h3{margin:0 0 4px; font-size:18px}
-    .radio .marquee{font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; position:relative}
-    .radio .marquee span{display:inline-block; padding-left:100%; animation: marquee 14s linear infinite}
-    @keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-100%)} }
-    .radio .controls{display:flex; gap:10px}
-    .btn{display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:2px solid rgba(168,255,255,.45); box-shadow: var(--shadow-neon); background: rgba(9,14,22,.6); cursor:pointer; transition:.2s transform}
-    .btn:hover{transform: scale(1.1)}
-    .btn svg{width:20px; height:20px; fill:var(--accent)}
+/* Splash */
+.splash{position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(800px 600px at 50% 20%, rgba(255,170,230,.10), transparent 60%), #120916; color:#fff; z-index:100}
+.splash .inner{text-align:center}
+.enter{ margin-top:20px; padding:14px 22px; border-radius:999px; border:2px solid rgba(255,170,230,.6); background: transparent; color:#fff; font-weight:800; letter-spacing:.06em; cursor:pointer; box-shadow:0 0 16px rgba(255,170,230,.6)}
+.enter:hover{ filter: drop-shadow(0 0 16px rgba(255,170,230,.85))}
+.no-scroll{overflow:hidden;height:100%}
 
-    /* PARTNERS */
-    .partners{display:grid; gap:16px}
-    @media(min-width: 820px){ .partners{grid-template-columns: repeat(2, 1fr)} }
-    .partner{display:flex; gap:16px; align-items:center; padding:14px}
-    .partner img{width:60px; height:60px; object-fit:cover; border-radius:12px; border:1px solid rgba(168,255,255,.3); max-width:100%}
-    .partner .meta{flex:1; min-width:0}
-    .partner .cta{margin-left:auto}
-    .button{border:1.5px solid rgba(168,255,255,.6); padding:10px 14px; border-radius:999px; box-shadow: var(--shadow-neon); transition:transform .18s ease-out}
-    .button:hover{transform:scale(1.06)}
-    img{max-width:100%; height:auto}
+/* Reveal */
+.reveal{opacity:0; transform: translateY(16px); transition: .6s ease}
+.reveal.visible{opacity:1; transform:none}
 
-    /* CONTACT + FOOTER */
-    .contact{font-size:12px; color:var(--muted); text-align:center; line-height:1.8}
-    .powered{margin-top:16px; position:relative; overflow:hidden; border-radius:var(--radius); text-align:center; padding:14px; font-size:12px; color:#cfe8ff; background: linear-gradient(180deg, rgba(20,24,36,.7), rgba(8,12,20,.7)); border:1px solid rgba(168,255,255,.2)}
-    .powered::after{content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(126,203,255,.35), transparent); transform: translateX(-100%); animation: scan 4.5s infinite}
-    @keyframes scan{ 0%{ transform: translateX(-100%)} 60%{ transform: translateX(100%)} 100%{ transform: translateX(100%)} }
-
-    /* SPLASH + TOAST + REVEAL */
-    .splash{position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(800px 600px at 50% 20%, rgba(126,203,255,.08), transparent 60%), #06080f; color: #eaffff; z-index:100}
-    .splash .inner{ text-align:center}
-    .enter{ margin-top:20px; padding:14px 22px; border-radius:999px; border:2px solid rgba(126,203,255,.5); background: transparent; color:#eaffff; font-weight:700; letter-spacing:.06em; cursor:pointer; box-shadow: var(--shadow-neon)}
-    .enter:hover{ filter: drop-shadow(0 0 16px rgba(126,203,255,.8))}
-    .no-scroll{overflow:hidden;height:100%}
-
-    .toast{position: fixed; bottom:22px; right:22px; background: var(--card-strong); color:var(--text); border:1px solid rgba(168,255,255,.3); padding:12px 14px; border-radius:14px; box-shadow: 0 10px 30px rgba(0,0,0,.4); display:flex; gap:10px; align-items:flex-start; max-width: 360px; z-index:40}
-    .toast button{margin-left:auto; background:transparent; border:none; color:var(--muted); cursor:pointer; font-weight:700}
-
-    .reveal{opacity:0; transform: translateY(16px); transition: .6s ease}
-    .reveal.visible{opacity:1; transform:none}
-
-    /* DEVTOOLS overlay */
-    #devtoolsOverlay{position:fixed; inset:0; background:rgba(0,0,0,.9); color:#fff; display:none; align-items:center; justify-content:center; text-align:center; padding:24px; z-index:9999}
-    #devtoolsOverlay .box{max-width:560px; background:rgba(20,24,36,.85); border:1px solid rgba(126,203,255,.35); border-radius:18px; padding:22px; box-shadow:0 0 24px rgba(126,203,255,.25)}
-    #devtoolsOverlay h2{margin:0 0 8px; font-family:Orbitron,Inter,sans-serif; letter-spacing:.06em}
-    #devtoolsOverlay p{margin:0; color:#cde7ff}
-
-    /* --- Mobile tweaks --- */
-    @media(max-width: 980px){
-      .grid.stream{ grid-template-columns: 1fr; } /* player nad czatem */
-      .chat-note{ grid-column:auto; }
-    }
-    @media(max-width: 600px){
-      main{margin:42px auto 90px; padding:0 14px}
-      .logo h1{font-size: clamp(34px, 9vw, 56px)}
-      .zone{font-size:11px; letter-spacing:.18em}
-      .section{margin:32px 0}
-      .chip{padding:9px 12px}
-      .radio{gap:12px; align-items:flex-start}
-      .radio .cover{width:44px; height:44px}
-      .radio h3{font-size:16px}
-      .radio .marquee{font-size:12px}
-      .toast{max-width:calc(100% - 32px)}
-    }
-  </style>
+/* Mobile tweaks */
+@media(max-width: 600px){
+  main{margin:42px auto 90px; padding:0 14px}
+  .logo h1{font-size: clamp(36px, 10vw, 64px)}
+  .section{margin:32px 0}
+  .radio .cover{width:50px; height:50px}
+}
+</style>
 </head>
 <body class="no-scroll">
-  <!-- SPLASH -->
-  <div id="splash" class="splash">
-    <div class="inner">
-      <div class="logo" style="margin:0">
-        <h1 id="logoText">SNYUZII</h1>
-      </div>
-      <div style="opacity:.85">kliknij, aby wejść</div>
-      <button id="enterBtn" class="enter">WEJDŹ</button>
+<!-- Splash -->
+<div id="splash" class="splash">
+  <div class="inner">
+    <div class="logo" style="margin:0">
+      <h1 id="logoText">melapustelnik</h1>
+      <div class="subtitle">kliknij, aby wejść ✦</div>
+    </div>
+    <button id="enterBtn" class="enter">WEJDŹ</button>
+  </div>
+</div>
+
+<!-- News -->
+<div class="ticker">
+  <div class="label">NEWS</div>
+  <div class="mask">
+    <div id="tickerTrack" class="track">
+      <div id="tickerFeedA" class="row"></div>
+      <div id="tickerFeedB" class="row" aria-hidden="true"></div>
     </div>
   </div>
+</div>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="label">
-      <div>NEWS</div>
-      <div id="liveBadge" class="liveBadge off"><span class="dot"></span> OFFLINE</div>
-    </div>
-    <div class="mask">
-      <div id="tickerTrack" class="track">
-        <div id="tickerFeedA" class="row" aria-hidden="false"></div>
-        <div id="tickerFeedB" class="row" aria-hidden="true"></div>
-      </div>
-    </div>
+<main>
+  <!-- Logo -->
+  <div class="logo reveal">
+    <h1 id="mainLogo">melapustelnik</h1>
+    <div class="sparkles" id="sparkles"></div>
   </div>
 
-  <main>
-    <!-- LOGO -->
-    <div class="logo reveal">
-      <h1 id="mainLogo">SNYUZII</h1>
-      <div class="sparkles" id="sparkles"></div>
+  <!-- Socials -->
+  <div id="socials" class="socials reveal"></div>
+
+  <!-- Stream + chat -->
+  <h2 class="zone reveal">STREFA STREAM</h2>
+  <section class="section grid stream reveal">
+    <div class="card">
+      <div class="frame">
+        <iframe id="twitch-embed" allowfullscreen></iframe>
+      </div>
+      <div class="mini-donate">
+        <a href="https://tipply.pl/@melamelaa" class="mini-btn" target="_blank" rel="noopener">Donate TIPPLY</a>
+        <div class="pay-note">Formy płatności: BLIK, Paysafecard, CashBill Przelew, PayPal, Revolut, BLIK „Płacę później”, Visa/Mastercard, SMS, SMS Full, SMS Plus.</div>
+      </div>
     </div>
-
-    <!-- SOCIALS -->
-    <div id="socials" class="socials reveal"></div>
-
-    <!-- STREAM + CHAT -->
-    <h2 class="zone reveal">STREFA STREAM</h2>
-    <section class="section grid stream reveal">
-      <div class="card">
-        <div class="frame">
-          <iframe id="twitch-embed" allowfullscreen frameborder="0"></iframe>
-        </div>
-
-        <!-- Jeden przycisk DONATE + mały opis form płatności -->
-        <div class="mini-donate">
-          <a href="https://tipply.pl/@Sniezny" target="_blank" rel="noopener" class="mini-btn">Donate TIPPLY</a>
-          <div class="pay-note">
-            Formy płatności: BLIK, Paysafecard, CashBill Przelew, PayPal, Revolut, BLIK Płacę Później, Visa/Mastercard, SMS, SMS Full, SMS Plus.
-          </div>
-        </div>
+    <div class="card">
+      <div class="frame" style="aspect-ratio:auto; height:100%">
+        <iframe id="twitch-chat"></iframe>
       </div>
-
-      <div class="card">
-        <div class="frame" style="aspect-ratio:auto; height:100%">
-          <iframe id="twitch-chat" frameborder="0"></iframe>
-        </div>
-      </div>
-
-      <!-- Mały napis pod kartą czatu -->
-      <div class="chat-note">
-        Aby korzystać z czatu, zaloguj się na <a href="https://www.twitch.tv/" target="_blank" rel="noopener">Twitch.tv</a>.
-      </div>
-    </section>
-
-    <h2 class="zone reveal">RADYJKO</h2>
-    <section class="section card reveal">
-      <div class="radio">
-        <div class="cover"><img id="radioCover" src="https://i.imgur.com/IGjyCAy.png" alt="okładka" style="width:100%;height:100%"></div>
-        <div class="meta">
-          <h3 id="radioTitle">Radyjko</h3>
-          <div class="marquee"><span id="radioInfo">— utwór — wykonawca — tytuł —</span></div>
-        </div>
-        <div class="controls">
-          <button class="btn" id="playPause" aria-label="Odtwarzaj/Pauza">
-            <svg viewBox="0 0 24 24"><path id="playIcon" d="M8 5v14l11-7z"/></svg>
-          </button>
-          <button class="btn" id="mute" aria-label="Wycisz">
-            <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 0 1-2.1 3.8l1.4 1.4A6.5 6.5 0 0 0 19.5 12 6.5 6.5 0 0 0 15.8 6.8l-1.4 1.4A4.5 4.5 0 0 1 16.5 12z"/></svg>
-          </button>
-        </div>
-        <audio id="audio" preload="none"></audio>
-      </div>
-    </section>
-
-    <h2 class="zone reveal">STREFA PARTNERÓW</h2>
-    <section class="section">
-      <div class="partners" id="partners"></div>
-    </section>
-
-    <section class="section card reveal" style="padding:16px 18px">
-      <div class="contact">
-        <div style="font-weight:700; color:#eaf8ff; letter-spacing:.12em; margin-bottom:6px">kontakt</div>
-        <div>- discord: <a id="contactDiscord" href="#" target="_blank" rel="noopener"></a></div>
-        <div>- e-mail: <a id="contactEmail" href="#"></a></div>
-      </div>
-      <div class="powered">Powered by <strong>snyuzii.xyz</strong></div>
-    </section>
-  </main>
-
-  <!-- TOAST -->
-  <div id="toast" class="toast" hidden>
-    <div>
-      <strong>Witaj!</strong><br/>
-      Ta strona jest w fazie testów :)
     </div>
-    <button id="closeToast">×</button>
-  </div>
+    <div class="chat-note">Aby korzystać z czatu, zaloguj się na <a href="https://www.twitch.tv/" target="_blank" rel="noopener">Twitch.tv</a>.</div>
+  </section>
 
-  <!-- DEVTOOLS OVERLAY -->
-  <div id="devtoolsOverlay">
-    <div class="box">
-      <h2>Narzędzia deweloperskie wykryte</h2>
-      <p>Proszę zamknąć DevTools. Nastąpi przekierowanie…</p>
+  <!-- Radio -->
+  <h2 class="zone reveal">RADYJKO — LOFI / CHILL</h2>
+  <section class="section card reveal">
+    <div class="radio">
+      <div class="cover"><img id="radioCover" src="https://i.imgur.com/f3c8b0p.png" alt="okładka" style="width:100%;height:100%"></div>
+      <div class="meta">
+        <h3 id="radioTitle">Lofi Chill Beats</h3>
+        <div class="marquee"><span id="radioInfo">– mellow lofi • cozy anime vibes • study / relax –</span></div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="playPause" aria-label="Odtwarzaj/Pauza">
+          <svg viewBox="0 0 24 24"><path id="playIcon" d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="btn" id="mute" aria-label="Wycisz">
+          <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 0 1-2.1 3.8l1.4 1.4A6.5 6.5 0 0 0 19.5 12 6.5 6.5 0 0 0 15.8 6.8l-1.4 1.4A4.5 4.5 0 0 1 16.5 12z"/></svg>
+        </button>
+      </div>
+      <audio id="audio" preload="none"></audio>
     </div>
-  </div>
+  </section>
 
-  <script>
-    // ---------- CONFIG ----------
-    const CONFIG = {
-      backgroundImage: 'https://i.imgur.com/Nsrp54Q.jpeg',
-      logoText: 'SNYUZII',
-      news: [
-        'Nowy stream już dziś o 20:00!',
-        'Dołącz na Discord — snyuzii.xyz',
-        'Follow @snyuzii na Twitch/X/IG',
-        'Radyjko: lo-fi, synthwave, j-pop 🎧'
-      ],
-      socials: [
-        {label:'YouTube', icon:'https://simpleicons.org/icons/youtube.svg', url:'https://www.youtube.com/@snieznyy'},
-        {label:'TikTok', icon:'https://simpleicons.org/icons/tiktok.svg', url:'https://www.tiktok.com/@snieznyyy'},
-        {label:'Twitch', icon:'https://simpleicons.org/icons/twitch.svg', url:'https://twitch.tv/snieznybot'},
-        {label:'X', icon:'https://simpleicons.org/icons/x.svg', url:'https://x.com/Sniezny_'},
-        {label:'Discord', icon:'https://simpleicons.org/icons/discord.svg', url:'https://discord.gg/ZPZY6h6DP3'},
-        {label:'Instagram', icon:'https://simpleicons.org/icons/instagram.svg', url:'https://instagram.com/snieznyyyy'}
-      ],
-      radio: { streamUrl:'https://stream.nightride.fm/nightride.mp3', cover:'https://i.imgur.com/IGjyCAy.png', title:'Radyjko', info:'Nazwa zostanie dodana później tera testy' },
-      partners: [
-        {logo:'https://i.imgur.com/EG6PCi3.png', name:'RAPIDSKINS', desc:'Sklep ze skinami CS. sprzedaż i szybkie wypłaty.', cta:'Sprawdź', url:'https://rapidskins.com'},
-        {logo:'https://i.imgur.com/hOQRvOK.png', name:'CSGOFAST', desc:'Ruletka, upgrader, coinflip i inne tryby.', cta:'Zagraj', url:'https://csgofast.com'},
-        {logo:'https://i.imgur.com/KzkZaZi.png', name:'INSTANT-GAMING', desc:'Tanie gry i karty podarunkowe.', cta:'Kup taniej', url:'https://www.instant-gaming.com'},
-        {logo:'https://i.imgur.com/eDYyA4G.png', name:'SNYUZII TOOLS', desc:'Małe narzędzia i boty dla streamerów.', cta:'Zobacz', url:'https://snyuzii.xyz'},
-        {logo:'https://i.imgur.com/eDYyA4G.png', name:'Partner 5', desc:'Dodam se pozniej.', cta:'Wejdź', url:'#'}
-      ],
-      contact:{ discord:'snyuzii.xyz', email:'sniezny@snyuzii.xyz' },
-      showWelcomeToast:true, sparkleCount:22,
-      twitchParents:['snyuzii.xyz','www.snyuzii.xyz'],
-      twitchAPI:{ clientId:'m1grey0td46f6wyoaj4g4je9c9q1t1', clientSecret:'gpsjz5b4negjfwo8r9mvf6pwm7etjz', channelLogin:'snieznybot', refreshMs:60000 },
-      devtools:{ redirect:'https://www.youtube.com/shorts/cFwdpU4tCQ0?feature=share' }
-    };
+  <!-- Partnerzy -->
+  <h2 class="zone reveal">PARTNERZY</h2>
+  <section class="section">
+    <div class="partners" id="partners"></div>
+  </section>
 
-    // ---------- INIT UI ----------
-    document.documentElement.style.setProperty('--bg-image', `url('${CONFIG.backgroundImage}')`);
-    const mainLogo = document.getElementById('mainLogo');
-    const logoText = document.getElementById('logoText');
-    mainLogo.textContent = CONFIG.logoText; logoText.textContent = CONFIG.logoText;
+  <!-- Kontakt + footer -->
+  <section class="section card reveal" style="padding:16px 18px">
+    <div class="contact">
+      <div style="font-weight:800; color:#ffeaf6; letter-spacing:.12em; margin-bottom:6px">kontakt</div>
+      <div>- e-mail: <a id="contactEmail" href="#"></a></div>
+    </div>
+    <div class="powered">Powered by <strong><a href="https://snyuzii.xyz" target="_blank" rel="noopener">snyuzii.xyz</a></strong></div>
+  </section>
+</main>
 
-    // ticker news
-    const feedA = document.getElementById('tickerFeedA');
-    const feedB = document.getElementById('tickerFeedB');
-    const tickerHtml = CONFIG.news.map(t=>`<div class="item">${t}</div>`).join('');
-    feedA.innerHTML = tickerHtml; feedB.innerHTML = tickerHtml;
+<script>
+/* -------- CONFIG -------- */
+const CONFIG = {
+  backgroundImage: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2100&auto=format&fit=crop',
+  logoText: 'melapustelnik',
+  news: [
+    'Witaj w pastelowym świecie ✦',
+    'Follow: Instagram / TikTok / X / Discord',
+    'Lofi chill gra po kliknięciu wejścia 🎧',
+    'Partnerzy: Opera GX • YUMISU • ACEGEAR',
+  ],
+  socials: [
+    {label:'Instagram', icon:'https://simpleicons.org/icons/instagram.svg', url:'https://www.instagram.com/melapustelnik/'},
+    {label:'TikTok', icon:'https://simpleicons.org/icons/tiktok.svg', url:'https://www.tiktok.com/@melapustelnik?_t=8nWbD6rlbVp&_r=1'},
+    {label:'X', icon:'https://simpleicons.org/icons/x.svg', url:'https://x.com/melapustelnik?s=21'},
+    {label:'Discord', icon:'https://simpleicons.org/icons/discord.svg', url:'https://discord.gg/FA8P7w6zWN'},
+    {label:'Twitch', icon:'https://simpleicons.org/icons/twitch.svg', url:'https://www.twitch.tv/melapustelnik'}
+  ],
+  twitch: { channel: 'melapustelnik', parents: ['mela.snyuzii.xyz','snyuzii.xyz','www.snyuzii.xyz'] },
+  radio: {
+    streamUrl: 'https://stream.nightride.fm/lofi.mp3',  /* lofi/chill */
+    cover: 'https://i.imgur.com/f3c8b0p.png',
+    title: 'Lofi Chill Beats',
+    info: '– mellow lofi • cozy anime vibes • study / relax –'
+  },
+  partners: [
+    {logo:'https://i.imgur.com/dX1o3lI.png', name:'Opera GX', desc:'Dołącz do GX Creators – przeglądarka dla graczy.', cta:'Sprawdź', url:'https://www.opera.com/pl/gx/gx-creators'},
+    {logo:'https://i.imgur.com/9tGkTn4.png', name:'YUMISU 2050 Cloud Pink', desc:'Różowy fotel biurowy – magnetyczny materiał.', cta:'Zobacz', url:'https://www.yumisu.pl/product/fotel-biurowy-yumisu-2050-magnetic-material-cloud-pink/'},
+    {logo:'https://i.imgur.com/0wq2pQZ.png', name:'ACEGEAR', desc:'Akcesoria gamingowe — kod: MELA (-5%).', cta:'Sklep', url:'https://acegear.pl/'}
+  ],
+  contact: { email: 'mela@sayflu.com' },
+  sparkles: 26
+};
 
-    // socials
-    document.getElementById('socials').innerHTML = CONFIG.socials.map(s=>`
-      <a class="chip" href="${s.url}" target="_blank" rel="noopener">
-        <img src="${s.icon}" alt="${s.label}"/><span>${s.label}</span>
-      </a>`).join('');
+/* -------- INIT UI -------- */
+document.documentElement.style.setProperty('--bg-image', `url('${CONFIG.backgroundImage}')`);
+const mainLogo = document.getElementById('mainLogo');
+const logoText = document.getElementById('logoText');
+mainLogo.textContent = CONFIG.logoText; logoText.textContent = CONFIG.logoText;
 
-    // Twitch player + chat (dynamic parent=)
-    const parentsParam = CONFIG.twitchParents.join('&parent=');
-    document.getElementById('twitch-embed').src =
-      `https://player.twitch.tv/?channel=${CONFIG.twitchAPI.channelLogin}&parent=${parentsParam}&muted=true`;
-    document.getElementById('twitch-chat').src =
-      `https://www.twitch.tv/embed/${CONFIG.twitchAPI.channelLogin}/chat?parent=${parentsParam}&darkpopout`;
+/* ticker */
+const feedA = document.getElementById('tickerFeedA');
+const feedB = document.getElementById('tickerFeedB');
+const tickerHtml = CONFIG.news.map(t=>`<div class="item">${t}</div>`).join('');
+feedA.innerHTML = tickerHtml; feedB.innerHTML = tickerHtml;
 
-    // LIVE badge via Twitch API
-    let _twitchToken = '';
-    async function getToken(){
-      if(_twitchToken) return _twitchToken;
-      try{
-        const res = await fetch('https://id.twitch.tv/oauth2/token', {
-          method:'POST',
-          headers:{'Content-Type':'application/x-www-form-urlencoded'},
-          body: new URLSearchParams({
-            client_id: CONFIG.twitchAPI.clientId,
-            client_secret: CONFIG.twitchAPI.clientSecret,
-            grant_type: 'client_credentials'
-          })
-        });
-        const data = await res.json();
-        _twitchToken = data.access_token || '';
-        return _twitchToken;
-      }catch(e){ console.warn('token error', e); return ''; }
-    }
-    async function checkLive(){
-      const badge = document.getElementById('liveBadge');
-      try{
-        const token = await getToken();
-        if(!token){ badge.className='liveBadge off'; badge.innerHTML='<span class="dot"></span> OFFLINE'; return; }
-        const res = await fetch(`https://api.twitch.tv/helix/streams?user_login=${encodeURIComponent(CONFIG.twitchAPI.channelLogin)}`,{
-          headers:{ 'Client-ID': CONFIG.twitchAPI.clientId, 'Authorization': `Bearer ${token}` }
-        });
-        const data = await res.json();
-        const isLive = Array.isArray(data.data) && data.data.length > 0 && data.data[0].type === 'live';
-        badge.className = isLive ? 'liveBadge on' : 'liveBadge off';
-        badge.innerHTML = `<span class="dot"></span> ${isLive ? 'LIVE' : 'OFFLINE'}`;
-      }catch(e){
-        console.warn('live check error', e);
-        badge.className='liveBadge off';
-        badge.innerHTML='<span class="dot"></span> OFFLINE';
-      }
-    }
-    checkLive();
-    setInterval(checkLive, CONFIG.twitchAPI.refreshMs);
+/* socials */
+document.getElementById('socials').innerHTML = CONFIG.socials.map(s=>`
+  <a class="chip" href="${s.url}" target="_blank" rel="noopener">
+    <img src="${s.icon}" alt="${s.label}"/><span>${s.label}</span>
+  </a>`).join('');
 
-    // radio
-    const audio = document.getElementById('audio');
-    audio.src = CONFIG.radio.streamUrl;
-    document.getElementById('radioTitle').textContent = CONFIG.radio.title;
-    document.getElementById('radioInfo').textContent = CONFIG.radio.info;
-    document.getElementById('radioCover').src = CONFIG.radio.cover;
+/* twitch embeds */
+const parentsParam = CONFIG.twitch.parents.join('&parent=');
+document.getElementById('twitch-embed').src =
+  `https://player.twitch.tv/?channel=${CONFIG.twitch.channel}&parent=${parentsParam}&muted=true`;
+document.getElementById('twitch-chat').src =
+  `https://www.twitch.tv/embed/${CONFIG.twitch.channel}/chat?parent=${parentsParam}&darkpopout`;
 
-    // partnerzy
-    document.getElementById('partners').innerHTML = CONFIG.partners.map(p=>`
-      <a class="card partner reveal" href="${p.url}" target="_blank" rel="noopener">
-        <img src="${p.logo}" alt="${p.name}"/>
-        <div class="meta">
-          <div style="font-weight:800; letter-spacing:.04em">${p.name}</div>
-          <div style="font-size:13px; color:var(--muted)">${p.desc}</div>
-        </div>
-        <div class="cta button">${p.cta}</div>
-      </a>`).join('');
+/* radio */
+const audio = document.getElementById('audio');
+audio.src = CONFIG.radio.streamUrl;
+document.getElementById('radioTitle').textContent = CONFIG.radio.title;
+document.getElementById('radioInfo').textContent = CONFIG.radio.info;
+document.getElementById('radioCover').src = CONFIG.radio.cover;
 
-    // kontakt
-    const disc = document.getElementById('contactDiscord');
-    const mail = document.getElementById('contactEmail');
-    disc.textContent = CONFIG.contact.discord; disc.href = 'https://' + CONFIG.contact.discord;
-    mail.textContent = CONFIG.contact.email; mail.href = 'mailto:' + CONFIG.contact.email;
+/* partnerzy */
+document.getElementById('partners').innerHTML = CONFIG.partners.map(p=>`
+  <a class="card partner reveal" href="${p.url}" target="_blank" rel="noopener">
+    <img src="${p.logo}" alt="${p.name}"/>
+    <div class="meta">
+      <div style="font-weight:800; letter-spacing:.04em">${p.name}</div>
+      <div style="font-size:13px; color:#f6dff3">${p.desc}</div>
+    </div>
+    <div class="cta button">${p.cta}</div>
+  </a>`).join('');
 
-    // sparkles
-    const sparkWrap = document.getElementById('sparkles');
-    for(let i=0;i<CONFIG.sparkleCount;i++){
-      const s = document.createElement('i');
-      s.style.left = Math.random()*100 + '%';
-      s.style.top = (Math.random()*70 + 10) + '%';
-      s.style.animationDelay = (Math.random()*2)+'s';
-      s.style.boxShadow = `0 0 ${6 + Math.random()*10}px var(--accent), 0 0 ${12 + Math.random()*24}px var(--accent)`;
-      sparkWrap.appendChild(s);
-    }
+/* kontakt */
+const mail = document.getElementById('contactEmail');
+mail.textContent = CONFIG.contact.email;
+mail.href = 'mailto:' + CONFIG.contact.email;
 
-    // splash
-    const splash = document.getElementById('splash');
-    document.getElementById('enterBtn').addEventListener('click', async () => {
-      splash.style.opacity = '0';
-      setTimeout(()=> splash.remove(), 320);
-      document.body.classList.remove('no-scroll');
-      try{ await audio.play(); }catch(e){}
-    });
+/* sparkles */
+const sparkWrap = document.getElementById('sparkles');
+for(let i=0;i<CONFIG.sparkles;i++){
+  const s = document.createElement('i');
+  s.style.left = Math.random()*100 + '%';
+  s.style.top = (Math.random()*70 + 10) + '%';
+  s.style.animationDelay = (Math.random()*2)+'s';
+  sparkWrap.appendChild(s);
+}
 
-    // radio controls
-    const playBtn = document.getElementById('playPause');
-    const muteBtn = document.getElementById('mute');
-    const playIcon = document.getElementById('playIcon');
-    let playing = false;
-    const setPlayIcon=()=>playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
-    playBtn.addEventListener('click', async()=>{
-      if(!playing){ await audio.play(); playing = true; } else { audio.pause(); playing = false; }
-      setPlayIcon();
-    });
-    muteBtn.addEventListener('click', ()=>{ audio.muted = !audio.muted; muteBtn.style.opacity = audio.muted? .6 : 1; });
-    audio.addEventListener('play', ()=>{ playing=true; setPlayIcon(); });
-    audio.addEventListener('pause', ()=>{ playing=false; setPlayIcon(); });
+/* splash (klik -> odtwarzanie) */
+document.getElementById('enterBtn').addEventListener('click', async () => {
+  document.getElementById('splash').style.opacity = '0';
+  setTimeout(()=> document.getElementById('splash').remove(), 320);
+  document.body.classList.remove('no-scroll');
+  try{ await audio.play(); }catch(e){}
+});
 
-    // reveal
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+/* radio controls */
+const playBtn = document.getElementById('playPause');
+const muteBtn = document.getElementById('mute');
+const playIcon = document.getElementById('playIcon');
+let playing = false;
+const setPlayIcon=()=>playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
+playBtn.addEventListener('click', async()=>{
+  if(!playing){ await audio.play(); playing = true; } else { audio.pause(); playing = false; }
+  setPlayIcon();
+});
+muteBtn.addEventListener('click', ()=>{ audio.muted = !audio.muted; muteBtn.style.opacity = audio.muted? .6 : 1; });
+audio.addEventListener('play', ()=>{ playing=true; setPlayIcon(); });
+audio.addEventListener('pause', ()=>{ playing=false; setPlayIcon(); });
 
-    // toast
-    const toast = document.getElementById('toast');
-    const closeToast = document.getElementById('closeToast');
-    if(CONFIG.showWelcomeToast && !sessionStorage.getItem('toastSeen')){
-      toast.hidden = false;
-      closeToast.onclick = () => { toast.remove(); sessionStorage.setItem('toastSeen','1'); };
-    }
+/* reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
-    // ---------- DEVTOOLS "zabezpieczenia" (wyłączone na mobile) ----------
-    const REDIRECT_URL = CONFIG.devtools.redirect;
-    const overlay = document.getElementById('devtoolsOverlay');
-
-    const isMobile = (() => {
-      const ua = navigator.userAgent || navigator.vendor || window.opera || "";
-      const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-      const small = Math.min(window.innerWidth, window.innerHeight) < 900;
-      return /Mobi|Android|iPhone|iPad|iPod/i.test(ua) || coarse || small;
-    })();
-
-    function showDevtoolsOverlayAndRedirect(){
-      if(overlay.style.display === 'flex') return;
-      overlay.style.display = 'flex';
-      setTimeout(()=>{ window.location.href = REDIRECT_URL; }, 2000);
-    }
-
-    document.addEventListener('keydown', (e)=>{
-      if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); showDevtoolsOverlayAndRedirect(); }
-      if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); e.stopPropagation(); showDevtoolsOverlayAndRedirect(); }
-      if (e.ctrlKey && e.key.toUpperCase() === 'U') { e.preventDefault(); e.stopPropagation(); showDevtoolsOverlayAndRedirect(); }
-    }, true);
-
-    document.addEventListener('contextmenu', (e)=>{ e.preventDefault(); });
-
-    if (!isMobile) {
-      const SIZE_THRESHOLD = 220;
-      let sizeTimer;
-      function detectBySize(){
-        clearTimeout(sizeTimer);
-        sizeTimer = setTimeout(() => {
-          const w = (window.outerWidth - window.innerWidth) > SIZE_THRESHOLD;
-          const h = (window.outerHeight - window.innerHeight) > SIZE_THRESHOLD;
-          if (w || h) showDevtoolsOverlayAndRedirect();
-        }, 200);
-      }
-      window.addEventListener('resize', detectBySize);
-      setInterval(detectBySize, 1500);
-
-      function detectByDebugger(){
-        const t0 = performance.now();
-        debugger;
-        const delta = performance.now() - t0;
-        if (delta > 250) showDevtoolsOverlayAndRedirect();
-      }
-      setInterval(detectByDebugger, 3000);
-    }
-
-    // --- SFX klik ("puk") ---
-    (function(){
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      let ctx;
-      function niceClick(){
-        ctx = ctx || new AudioCtx();
-        const now = ctx.currentTime;
-
-        const low = ctx.createOscillator();
-        const gLow = ctx.createGain();
-        low.type = 'sine';
-        low.frequency.setValueAtTime(200, now);
-        gLow.gain.setValueAtTime(0.22, now);
-        gLow.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
-        low.connect(gLow).connect(ctx.destination);
-        low.start(now);
-        low.stop(now + 0.055);
-
-        const high = ctx.createOscillator();
-        const gHigh = ctx.createGain();
-        high.type = 'square';
-        high.frequency.setValueAtTime(1200, now);
-        gHigh.gain.setValueAtTime(0.06, now);
-        gHigh.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
-        high.connect(gHigh).connect(ctx.destination);
-        high.start(now);
-        high.stop(now + 0.035);
-      }
-      document.addEventListener('click', (e)=>{
-        const el = e.target.closest('.chip, .button, .btn, .enter, .mini-btn');
-        if(el) niceClick();
-      }, true);
-    })();
-
-    // --- Parallax tła (1–5% zakresu, wyłączony na dotyku) ---
-    (function(){
-      const body = document.body;
-      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      if(isTouch) return; // nie na telefonach/tabletach
-
-      let rafId = null;
-      let targetX = 50, targetY = 50;
-
-      function onMove(e){
-        // zakres ok. +/- 5% od środka
-        const x = (e.clientX / window.innerWidth - 0.5) * 10; // 10 => +/-5%
-        const y = (e.clientY / window.innerHeight - 0.5) * 10;
-        targetX = 50 + x;
-        targetY = 50 + y;
-        if(!rafId) rafId = requestAnimationFrame(apply);
-      }
-      function apply(){
-        rafId = null;
-        body.style.backgroundPosition = `${targetX}% ${targetY}%`;
-      }
-      document.addEventListener('mousemove', onMove);
-    })();
-  </script>
+/* delikatny ruch tła (1–5%) */
+(function(){
+  const intensity = 0.03; // ~3%
+  let targetX = 0, targetY = 0, curX = 0, curY = 0;
+  function apply(){ 
+    curX += (targetX - curX) * 0.06;
+    curY += (targetY - curY) * 0.06;
+    document.body.style.backgroundPosition = `${50 + curX*intensity}% ${50 + curY*intensity}%`;
+    requestAnimationFrame(apply);
+  }
+  window.addEventListener('mousemove', (e)=>{
+    const cx = window.innerWidth/2, cy = window.innerHeight/2;
+    targetX = (e.clientX - cx) / cx;
+    targetY = (e.clientY - cy) / cy;
+  });
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+    targetY = (y - .5) * 2;
+  }, {passive:true});
+  apply();
+})();
+</script>
 </body>
 </html>
