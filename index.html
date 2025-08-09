@@ -6,45 +6,39 @@
 <title>melapustelnik — bio</title>
 <meta name="description" content="Oficjalna strona melapustelnik – stream, social media, radyjko lofi i partnerzy." />
 <meta property="og:image" content="https://i.imgur.com/3a3Qk7Z.png" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Kalam:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Pastel / anime vibe */
+  /* Kolory pastel/anime */
   --pink:#ff7ac8; --pink-2:#ffafe3; --lav:#b794f6; --mint:#a7ffea;
-  --text:#fff7fb; --muted:#f2d9ee; --ink:#190e20;
-  /* DWIE WARSTWY TŁA (kosmos na unsplash) */
-  --bg-image:
-    url('https://cdn.pixabay.com/photo/2013/07/18/20/26/space-164977_1280.jpg'),
-    url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2100&auto=format&fit=crop');
+  --text:#fff7fb; --muted:#e8cfe6; --ink:#1a1020;
+  --bg-image: url('https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?q=80&w=2100&auto=format&fit=crop'); /* opcjonalne tło zdjęciowe */
   --glass: blur(12px) saturate(120%);
   --card: rgba(35,18,44,.55);
   --line: rgba(255,170,230,.35);
   --shadow: 0 12px 40px rgba(0,0,0,.35);
-  --radius: 22px; --maxw:1180px;
+  --radius: 20px; --maxw:1200px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
-html{scroll-behavior:smooth}
 body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text);
-  background:#120916 fixed center/cover no-repeat var(--bg-image);
-  background-blend-mode: overlay; /* jak na snyuzii: warstwa jednolitego przyciemnienia na CAŁOŚĆ */
+  color:var(--text); background:#120916 fixed center/cover no-repeat var(--bg-image);
   overflow-x:hidden;
+  /* delikatny ruch tła (parallax) */
   transform: translate3d(0,0,0);
-  transition: background-position .15s ease-out;
 }
-/* Jednolita warstwa przyciemnienia na CAŁĄ stronę (jak na snyuzii) */
 body::before{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+  content:""; position:fixed; inset:-10%; pointer-events:none; z-index:-2;
   background:
-    radial-gradient(1200px 800px at 70% 10%, rgba(255,255,255,.06), transparent 30%),
-    radial-gradient(900px 700px at 10% 30%, rgba(255,170,230,.10), transparent 30%),
-    linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.82));
+    radial-gradient(1200px 800px at 70% 10%, rgba(255,170,230,.08), transparent 60%),
+    radial-gradient(900px 700px at 10% 30%, rgba(183,148,246,.10), transparent 60%),
+    linear-gradient(to bottom, rgba(18,9,22,.4), rgba(13,6,18,.75));
+  filter: saturate(110%);
 }
-
 a{color:inherit;text-decoration:none}
 
+/* NEWS */
 .ticker{
   position:sticky; top:0; z-index:50; backdrop-filter:var(--glass);
   background:linear-gradient(90deg, rgba(30,18,40,.95), rgba(30,18,40,.75));
@@ -61,27 +55,28 @@ a{color:inherit;text-decoration:none}
 main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
 
 /* LOGO */
-.logo{margin:60px auto 18px; text-align:center; position:relative; user-select:none}
+.logo{margin:54px auto 16px; text-align:center; position:relative; user-select:none}
 .logo h1{
   font-family: Kalam, Inter, sans-serif;
-  font-size: clamp(46px, 9vw, 88px); font-weight:900; letter-spacing:.01em;
+  font-size: clamp(42px, 8vw, 84px); font-weight:900; letter-spacing:.02em;
   color:#fff; text-shadow: 0 0 22px var(--pink), 0 0 46px var(--pink-2);
 }
 .sparkles{position:absolute; inset:0; pointer-events:none}
-/* RÓŻOWO-BIAŁE KULKI */
 .sparkles i{position:absolute; width:7px; height:7px; border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, #fff, var(--pink-2));
-  box-shadow:0 0 10px var(--pink), 0 0 22px var(--pink-2);
+  background: radial-gradient(circle at 30% 30%, #fff, var(--mint));
+  box-shadow:0 0 10px var(--mint), 0 0 22px var(--mint);
   animation: twinkle 2.4s ease-in-out infinite; opacity:.95}
 @keyframes twinkle{0%,100%{transform:scale(.6); opacity:.5} 50%{transform:scale(1.2); opacity:1}}
 .subtitle{margin-top:6px; font-size:13px; color:var(--muted); letter-spacing:.08em}
 
 /* SOCIALS */
 .socials{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin: 22px 0 44px}
-.chip{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:16px;
-  border:1px solid var(--line); background: rgba(255,170,230,.10);
-  backdrop-filter:var(--glass); transition:.25s transform,.2s box-shadow}
-.chip:hover{transform:translateY(-2px) scale(1.06); box-shadow:0 0 14px rgba(255,170,230,.45)}
+.chip{
+  display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+  border:1px solid var(--line); background: rgba(255,170,230,.08);
+  backdrop-filter:var(--glass); transition:.25s transform,.2s box-shadow
+}
+.chip:hover{transform:translateY(-2px) scale(1.06); box-shadow: 0 0 14px rgba(255,170,230,.45)}
 .chip img{width:18px; height:18px; object-fit:contain}
 
 /* KARTY / SEKCJE */
@@ -92,13 +87,13 @@ main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
 
 /* STREAM + CHAT */
 .grid{display:grid; gap:24px}
-@media(min-width: 980px){ .grid.stream{grid-template-columns: 1.65fr 1fr} }
-.frame{aspect-ratio:16/9; width:100%; border-radius:18px; border:2px solid rgba(255,170,230,.45); box-shadow:0 0 18px rgba(255,170,230,.3); overflow:hidden; background:#000}
+@media(min-width: 980px){ .grid.stream{grid-template-columns: 1.7fr 1fr} }
+.frame{aspect-ratio:16/9; width:100%; border-radius:calc(var(--radius) - 2px); border:2px solid rgba(255,170,230,.45); box-shadow:0 0 18px rgba(255,170,230,.3); overflow:hidden; background:#000}
 .frame iframe{display:block; width:100%; height:100%; border:0}
 
 /* Donate mini pod playerem */
-.mini-donate{text-align:center; padding:10px; background:linear-gradient(180deg, rgba(255,170,230,.10), rgba(255,170,230,.05)); border-top:1px solid var(--line)}
-.mini-btn{display:inline-block; font-weight:900; letter-spacing:.05em; padding:11px 22px; border-radius:14px; background: linear-gradient(135deg, #ff7ac8, #b794f6); color:#120916; border:1px solid #ffd2f2; box-shadow: 0 8px 30px rgba(255,122,200,.35); transition:.18s transform,.18s filter}
+.mini-donate{ text-align:center; padding:10px; background:linear-gradient(180deg, rgba(255,170,230,.10), rgba(255,170,230,.05)); border-top:1px solid var(--line) }
+.mini-btn{ display:inline-block; font-weight:900; letter-spacing:.05em; padding:11px 22px; border-radius:14px; background: linear-gradient(135deg, #ff7ac8, #b794f6); color:#120916; border:1px solid #ffd2f2; box-shadow: 0 8px 30px rgba(255,122,200,.35); transition:.18s transform,.18s filter }
 .mini-btn:hover{ transform: translateY(-1px) scale(1.03); filter:brightness(1.05) }
 .pay-note{font-size:11px; color:var(--muted); margin-top:6px; line-height:1.35}
 .chat-note{font-size:11px; color:var(--muted); margin-top:-16px; margin-bottom:10px}
@@ -129,32 +124,15 @@ main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
 .button:hover{transform:scale(1.06)}
 
 /* Kontakt + footer */
-.contact{font-size:12px; color:var(--muted); text-align:center; line-height:1.8; position:relative}
-.contact .email{
-  font-weight:800; color:#ffeaf6; letter-spacing:.02em; position:relative; display:inline-block; padding:2px 4px;
-}
-.contact .email::after{
-  content:""; position:absolute; left:-6px; right:-6px; bottom:-4px; height:1px;
-  background: linear-gradient(90deg, transparent, rgba(255,170,230,.55), transparent);
-  animation: scan 4.5s infinite;
-}
+.contact{font-size:12px; color:var(--muted); text-align:center; line-height:1.8}
 .powered{margin-top:16px; position:relative; overflow:hidden; border-radius:var(--radius); text-align:center; padding:14px; font-size:12px; color:#ffe8f7; background: linear-gradient(180deg, rgba(255,170,230,.16), rgba(255,170,230,.08)); border:1px solid var(--line)}
-.powered a{color:#ffe8f7; text-decoration:underline; text-underline-offset:3px}
 .powered::after{content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,170,230,.55), transparent); transform: translateX(-100%); animation: scan 4.5s infinite}
 @keyframes scan{0%{transform:translateX(-100%)} 60%{transform:translateX(100%)} 100%{transform:translateX(100%)}}
 
-/* Splash – styl z snyuzii, w różowej kolorystyce */
-.splash{
-  position: fixed; inset:0; display:grid; place-items:center;
-  background: radial-gradient(800px 600px at 50% 20%, rgba(255,170,230,.10), transparent 60%), #120916;
-  color:#fff; z-index:100
-}
-.splash .inner{ text-align:center }
-.enter{
-  margin-top:20px; padding:14px 22px; border-radius:999px;
-  border:2px solid rgba(255,170,230,.55); background: transparent; color:#fff;
-  font-weight:800; letter-spacing:.06em; cursor:pointer; box-shadow:0 0 16px rgba(255,170,230,.5)
-}
+/* Splash */
+.splash{position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(800px 600px at 50% 20%, rgba(255,170,230,.10), transparent 60%), #120916; color:#fff; z-index:100}
+.splash .inner{text-align:center}
+.enter{ margin-top:20px; padding:14px 22px; border-radius:999px; border:2px solid rgba(255,170,230,.6); background: transparent; color:#fff; font-weight:800; letter-spacing:.06em; cursor:pointer; box-shadow:0 0 16px rgba(255,170,230,.6)}
 .enter:hover{ filter: drop-shadow(0 0 16px rgba(255,170,230,.85))}
 .no-scroll{overflow:hidden;height:100%}
 
@@ -173,7 +151,7 @@ main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
 </head>
 <body class="no-scroll">
 <!-- Splash -->
-<div id="splash" class="splash" aria-hidden="false">
+<div id="splash" class="splash">
   <div class="inner">
     <div class="logo" style="margin:0">
       <h1 id="logoText">melapustelnik</h1>
@@ -203,16 +181,6 @@ main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
 
   <!-- Socials -->
   <div id="socials" class="socials reveal"></div>
-
-  <!-- O mnie -->
-  <h2 class="zone reveal">O MNIE</h2>
-  <section class="section card reveal" style="padding:16px 18px; line-height:1.7">
-    Heju, jestem Melcia. Nie poznasz mnie tylko przez krótkie zdanie, także wbij na strimki, żeby dowiedzieć się więcej 🤗.<br/>
-    Jeśli chcesz wiedzieć, kiedy dokładnie będą streamki, to wejdź na mojego Instagrama.<br/><br/>
-    🌙 Mela to skrót od imienia Amelia, a Pustelnik to moje nazwisko.<br/>
-    🌙 Mieszkam w okolicach Łodzi niedaleko Dawida JASPERA aha25.<br/>
-    🌙 Zazwyczaj streamy są codziennie w godzinach między 16/17.
-  </section>
 
   <!-- Stream + chat -->
   <h2 class="zone reveal">STREFA STREAM</h2>
@@ -251,7 +219,7 @@ main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
           <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 0 1-2.1 3.8l1.4 1.4A6.5 6.5 0 0 0 19.5 12 6.5 6.5 0 0 0 15.8 6.8l-1.4 1.4A4.5 4.5 0 0 1 16.5 12z"/></svg>
         </button>
       </div>
-      <audio id="audio" preload="none" crossorigin="anonymous"></audio>
+      <audio id="audio" preload="none"></audio>
     </div>
   </section>
 
@@ -265,16 +233,16 @@ main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
   <section class="section card reveal" style="padding:16px 18px">
     <div class="contact">
       <div style="font-weight:800; color:#ffeaf6; letter-spacing:.12em; margin-bottom:6px">kontakt</div>
-      <div>- e-mail: <a id="contactEmail" class="email" href="#"></a></div>
+      <div>- e-mail: <a id="contactEmail" href="#"></a></div>
     </div>
-    <div class="powered">Powered by <strong><a href="https://snyuzii.xyz" target="_blank" rel="noopener">snyuzii.xyz</a></strong></div>
+    <div class="powered">Powered by <strong>snyuzii.xyz</strong></div>
   </section>
 </main>
 
 <script>
 /* -------- CONFIG -------- */
 const CONFIG = {
-  backgroundImage: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2100&auto=format&fit=crop',
+  backgroundImage: 'https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?q=80&w=2100&auto=format&fit=crop',
   logoText: 'melapustelnik',
   news: [
     'Witaj w pastelowym świecie ✦',
@@ -292,7 +260,6 @@ const CONFIG = {
   twitch: { channel: 'melapustelnik', parents: ['mela.snyuzii.xyz','snyuzii.xyz','www.snyuzii.xyz'] },
   radio: {
     streamUrl: 'https://stream.nightride.fm/lofi.mp3',
-    fallbackStreamUrl: 'https://stream.nightride.fm/nightride.mp3',
     cover: 'https://i.imgur.com/f3c8b0p.png',
     title: 'Lofi Chill Beats',
     info: '– mellow lofi • cozy anime vibes • study / relax –'
@@ -308,8 +275,9 @@ const CONFIG = {
 
 /* -------- INIT UI -------- */
 document.documentElement.style.setProperty('--bg-image', `url('${CONFIG.backgroundImage}')`);
-document.getElementById('mainLogo').textContent = CONFIG.logoText;
-document.getElementById('logoText').textContent = CONFIG.logoText;
+const mainLogo = document.getElementById('mainLogo');
+const logoText = document.getElementById('logoText');
+mainLogo.textContent = CONFIG.logoText; logoText.textContent = CONFIG.logoText;
 
 /* ticker */
 const feedA = document.getElementById('tickerFeedA');
@@ -332,6 +300,7 @@ document.getElementById('twitch-chat').src =
 
 /* radio */
 const audio = document.getElementById('audio');
+audio.src = CONFIG.radio.streamUrl;
 document.getElementById('radioTitle').textContent = CONFIG.radio.title;
 document.getElementById('radioInfo').textContent = CONFIG.radio.info;
 document.getElementById('radioCover').src = CONFIG.radio.cover;
@@ -352,56 +321,23 @@ const mail = document.getElementById('contactEmail');
 mail.textContent = CONFIG.contact.email;
 mail.href = 'mailto:' + CONFIG.contact.email;
 
-/* sparkles (logo) */
-(function(){
-  const wrap = document.getElementById('sparkles');
-  for(let i=0;i<CONFIG.sparkles;i++){
-    const s = document.createElement('i');
-    s.style.left = Math.random()*100 + '%';
-    s.style.top = (Math.random()*70 + 10) + '%';
-    s.style.animationDelay = (Math.random()*2)+'s';
-    wrap.appendChild(s);
-  }
-})();
-
-/* helper: radio play with fallback + timeout */
-async function playRadio(){
-  const withCb = (url)=> url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
-  async function tryPlay(url, ms=3500){
-    return new Promise((resolve, reject)=>{
-      let done=false;
-      const onPlay=()=>{ if(done) return; done=true; cleanup(); resolve(true); };
-      const onError=()=>{ if(done) return; done=true; cleanup(); reject(new Error('audio error')); };
-      const t=setTimeout(()=>{ if(done) return; done=true; cleanup(); reject(new Error('timeout')); }, ms);
-      function cleanup(){
-        audio.removeEventListener('playing', onPlay);
-        audio.removeEventListener('play', onPlay);
-        audio.removeEventListener('error', onError);
-        clearTimeout(t);
-      }
-      audio.src = withCb(url);
-      audio.muted = false;
-      audio.play().catch(()=>{});
-      audio.addEventListener('playing', onPlay);
-      audio.addEventListener('play', onPlay);
-      audio.addEventListener('error', onError);
-    });
-  }
-  try{ await tryPlay(CONFIG.radio.streamUrl); }
-  catch(_){ if(CONFIG.radio.fallbackStreamUrl){ try{ await tryPlay(CONFIG.radio.fallbackStreamUrl); }catch(e){} } }
+/* sparkles */
+const sparkWrap = document.getElementById('sparkles');
+for(let i=0;i<CONFIG.sparkles;i++){
+  const s = document.createElement('i');
+  s.style.left = Math.random()*100 + '%';
+  s.style.top = (Math.random()*70 + 10) + '%';
+  s.style.animationDelay = (Math.random()*2)+'s';
+  sparkWrap.appendChild(s);
 }
 
-/* Splash: start always top + play radio */
-(function(){
-  window.scrollTo(0,0);
-  const splash = document.getElementById('splash');
-  document.getElementById('enterBtn').addEventListener('click', async () => {
-    splash.style.opacity = '0';
-    setTimeout(()=> splash.remove(), 320);
-    document.body.classList.remove('no-scroll');
-    try{ await playRadio(); }catch(e){}
-  });
-})();
+/* splash (klik -> odtwarzanie) */
+document.getElementById('enterBtn').addEventListener('click', async () => {
+  document.getElementById('splash').style.opacity = '0';
+  setTimeout(()=> document.getElementById('splash').remove(), 320);
+  document.body.classList.remove('no-scroll');
+  try{ await audio.play(); }catch(e){}
+});
 
 /* radio controls */
 const playBtn = document.getElementById('playPause');
@@ -410,23 +346,12 @@ const playIcon = document.getElementById('playIcon');
 let playing = false;
 const setPlayIcon=()=>playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
 playBtn.addEventListener('click', async()=>{
-  if(!playing){
-    try{
-      if(!audio.src){ await playRadio(); }
-      else { await audio.play(); }
-      playing = true;
-    }catch(e){}
-  } else {
-    audio.pause(); playing = false;
-  }
+  if(!playing){ await audio.play(); playing = true; } else { audio.pause(); playing = false; }
   setPlayIcon();
 });
 muteBtn.addEventListener('click', ()=>{ audio.muted = !audio.muted; muteBtn.style.opacity = audio.muted? .6 : 1; });
 audio.addEventListener('play', ()=>{ playing=true; setPlayIcon(); });
 audio.addEventListener('pause', ()=>{ playing=false; setPlayIcon(); });
-audio.addEventListener('error', async ()=>{ // spróbuj fallbacku automatycznie
-  if(CONFIG.radio.fallbackStreamUrl){ try{ await playRadio(); }catch(e){} }
-});
 
 /* reveal */
 const io = new IntersectionObserver((entries)=>{
@@ -434,19 +359,26 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
-/* lekki parallax jak u snyuzii */
+/* delikatny ruch tła (1–5% zakresu) */
 (function(){
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if(isTouch) return;
-  let rafId=null, targetX=50, targetY=50;
-  function onMove(e){
-    const x=(e.clientX/window.innerWidth - .5)*30;
-    const y=(e.clientY/window.innerHeight - .5)*20;
-    targetX=50+x; targetY=50+y;
-    if(!rafId) rafId=requestAnimationFrame(apply);
+  const intensity = 0.03; // ~3% ruchu
+  let targetX = 0, targetY = 0, curX = 0, curY = 0;
+  function apply(){ 
+    curX += (targetX - curX) * 0.06;
+    curY += (targetY - curY) * 0.06;
+    document.body.style.backgroundPosition = `${50 + curX*intensity}% ${50 + curY*intensity}%`;
+    requestAnimationFrame(apply);
   }
-  function apply(){ rafId=null; document.body.style.backgroundPosition=`${targetX}% ${targetY}%`; }
-  document.addEventListener('mousemove', onMove);
+  window.addEventListener('mousemove', (e)=>{
+    const cx = window.innerWidth/2, cy = window.innerHeight/2;
+    targetX = (e.clientX - cx) / cx;
+    targetY = (e.clientY - cy) / cy;
+  });
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+    targetY = (y - .5) * 2;
+  }, {passive:true});
+  apply();
 })();
 </script>
 </body>
