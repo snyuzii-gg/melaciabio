@@ -1,385 +1,589 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>melapustelnik — bio</title>
-<meta name="description" content="Oficjalna strona melapustelnik – stream, social media, radyjko lofi i partnerzy." />
-<meta property="og:image" content="https://i.imgur.com/3a3Qk7Z.png" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Kalam:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* Kolory pastel/anime */
-  --pink:#ff7ac8; --pink-2:#ffafe3; --lav:#b794f6; --mint:#a7ffea;
-  --text:#fff7fb; --muted:#e8cfe6; --ink:#1a1020;
-  --bg-image: url('https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?q=80&w=2100&auto=format&fit=crop'); /* opcjonalne tło zdjęciowe */
-  --glass: blur(12px) saturate(120%);
-  --card: rgba(35,18,44,.55);
-  --line: rgba(255,170,230,.35);
-  --shadow: 0 12px 40px rgba(0,0,0,.35);
-  --radius: 20px; --maxw:1200px;
-}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%}
-body{
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text); background:#120916 fixed center/cover no-repeat var(--bg-image);
-  overflow-x:hidden;
-  /* delikatny ruch tła (parallax) */
-  transform: translate3d(0,0,0);
-}
-body::before{
-  content:""; position:fixed; inset:-10%; pointer-events:none; z-index:-2;
-  background:
-    radial-gradient(1200px 800px at 70% 10%, rgba(255,170,230,.08), transparent 60%),
-    radial-gradient(900px 700px at 10% 30%, rgba(183,148,246,.10), transparent 60%),
-    linear-gradient(to bottom, rgba(18,9,22,.4), rgba(13,6,18,.75));
-  filter: saturate(110%);
-}
-a{color:inherit;text-decoration:none}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>melapustelnik — bio</title>
+  <meta name="description" content="Oficjalna bio-strona melapustelnik – stream, czat, social media, donate i partnerzy." />
+  <meta property="og:image" content="https://i.imgur.com/7k3D8Hf.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Pastelowe, „kawaiowe” fonty -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* =========================
+       Motyw: pastel-anime ✨
+       ========================= */
+    :root{
+      /* Paleta pastelowa (róż + lawenda + biel) */
+      --pink:#ff9bd5;
+      --pink-2:#ff7cc2;
+      --lav:#c8b6ff;
+      --lav-2:#b8a4ff;
+      --cream:#fff4fb;
+      --text:#ffeefe;
+      --muted:#ffd7ef;
 
-/* NEWS */
-.ticker{
-  position:sticky; top:0; z-index:50; backdrop-filter:var(--glass);
-  background:linear-gradient(90deg, rgba(30,18,40,.95), rgba(30,18,40,.75));
-  border-bottom:1px solid var(--line); box-shadow:0 1px 0 rgba(255,170,230,.18);
-  min-height:56px; display:flex; align-items:center; gap:14px
-}
-.ticker .label{margin-left:12px; font-weight:900; letter-spacing:.16em; font-size:12px; color:#fff; text-shadow: 0 0 12px var(--pink)}
-.ticker .mask{overflow:hidden; flex:1}
-.ticker .track{display:flex; width:max-content; animation: marquee2 28s linear infinite}
-.ticker .row{display:flex; gap:26px; padding:0 12px}
-.ticker .item{opacity:.96; background: rgba(255,170,230,.08); padding:6px 12px; border-radius:999px; border:1px solid rgba(255,170,230,.25); box-shadow:0 0 8px rgba(255,170,230,.18)}
-@keyframes marquee2{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+      --card:rgba(255,255,255,0.14);
+      --card-strong:rgba(255,255,255,0.22);
 
-main{max-width:var(--maxw); margin:58px auto 120px; padding:0 18px}
+      --radius:20px;
+      --maxw:1180px;
 
-/* LOGO */
-.logo{margin:54px auto 16px; text-align:center; position:relative; user-select:none}
-.logo h1{
-  font-family: Kalam, Inter, sans-serif;
-  font-size: clamp(42px, 8vw, 84px); font-weight:900; letter-spacing:.02em;
-  color:#fff; text-shadow: 0 0 22px var(--pink), 0 0 46px var(--pink-2);
-}
-.sparkles{position:absolute; inset:0; pointer-events:none}
-.sparkles i{position:absolute; width:7px; height:7px; border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, #fff, var(--mint));
-  box-shadow:0 0 10px var(--mint), 0 0 22px var(--mint);
-  animation: twinkle 2.4s ease-in-out infinite; opacity:.95}
-@keyframes twinkle{0%,100%{transform:scale(.6); opacity:.5} 50%{transform:scale(1.2); opacity:1}}
-.subtitle{margin-top:6px; font-size:13px; color:var(--muted); letter-spacing:.08em}
+      /* Poświaty w pastelach */
+      --shadow-neon:
+        0 0 10px color-mix(in srgb, var(--pink) 60%, transparent),
+        0 0 26px color-mix(in srgb, var(--lav) 60%, transparent);
+      --glow-strong:
+        0 0 14px var(--pink),
+        0 0 40px var(--lav);
 
-/* SOCIALS */
-.socials{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin: 22px 0 44px}
-.chip{
-  display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
-  border:1px solid var(--line); background: rgba(255,170,230,.08);
-  backdrop-filter:var(--glass); transition:.25s transform,.2s box-shadow
-}
-.chip:hover{transform:translateY(-2px) scale(1.06); box-shadow: 0 0 14px rgba(255,170,230,.45)}
-.chip img{width:18px; height:18px; object-fit:contain}
+      --live-red:#ff4b6e;
+      --offline:#bda9c4;
+    }
 
-/* KARTY / SEKCJE */
-.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); backdrop-filter:var(--glass); overflow:hidden}
-.section{margin:42px 0}
-.zone{display:inline-block; margin:30px 0 10px; font-size:12px; font-weight:900; letter-spacing:.22em; color:#ffe4f4; padding:6px 10px; border:1px solid var(--line); border-radius:999px; background: linear-gradient(180deg, rgba(255,170,230,.14), rgba(255,170,230,.06)); box-shadow: 0 0 14px rgba(255,170,230,.22)}
-.zone::before{content:"✦"; margin-right:8px; color:var(--pink)}
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
 
-/* STREAM + CHAT */
-.grid{display:grid; gap:24px}
-@media(min-width: 980px){ .grid.stream{grid-template-columns: 1.7fr 1fr} }
-.frame{aspect-ratio:16/9; width:100%; border-radius:calc(var(--radius) - 2px); border:2px solid rgba(255,170,230,.45); box-shadow:0 0 18px rgba(255,170,230,.3); overflow:hidden; background:#000}
-.frame iframe{display:block; width:100%; height:100%; border:0}
+    /* Tło: miękki gradient + półprzezroczyste gwiazdki (SVG pattern) */
+    body{
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 70% 10%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 700px at 10% 30%, rgba(255,155,213,.16), transparent 60%),
+        linear-gradient(180deg, #ffecf7 0%, #ffe6ff 35%, #f4eaff 100%) fixed;
+      /* delikatny wzorek gwiazdek */
+      background-image:
+        radial-gradient(1200px 800px at 70% 10%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 700px at 10% 30%, rgba(255,155,213,.16), transparent 60%),
+        url("data:image/svg+xml;utf8, \
+          <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'> \
+            <g fill='none' stroke='%23ffc3e6' stroke-width='1.2' stroke-linecap='round' opacity='0.55'> \
+              <path d='M10 20 l5 5 l-5 5 l-5 -5 z'/> \
+              <path d='M60 10 l4 6 l-4 6 l-4 -6 z'/> \
+              <path d='M100 40 l5 5 l-5 5 l-5 -5 z'/> \
+              <path d='M30 90 l6 4 l-6 4 l-6 -4 z'/> \
+              <path d='M85 85 l5 5 l-5 5 l-5 -5 z'/> \
+            </g> \
+          </svg>");
+      background-size: auto, auto, 220px 220px;
+      background-repeat: no-repeat, no-repeat, repeat;
+      overflow-x:hidden;
+      transition: background-position .15s ease-out;
+    }
 
-/* Donate mini pod playerem */
-.mini-donate{ text-align:center; padding:10px; background:linear-gradient(180deg, rgba(255,170,230,.10), rgba(255,170,230,.05)); border-top:1px solid var(--line) }
-.mini-btn{ display:inline-block; font-weight:900; letter-spacing:.05em; padding:11px 22px; border-radius:14px; background: linear-gradient(135deg, #ff7ac8, #b794f6); color:#120916; border:1px solid #ffd2f2; box-shadow: 0 8px 30px rgba(255,122,200,.35); transition:.18s transform,.18s filter }
-.mini-btn:hover{ transform: translateY(-1px) scale(1.03); filter:brightness(1.05) }
-.pay-note{font-size:11px; color:var(--muted); margin-top:6px; line-height:1.35}
-.chat-note{font-size:11px; color:var(--muted); margin-top:-16px; margin-bottom:10px}
-@media(min-width:980px){ .chat-note{ grid-column:2; text-align:left; padding-left:4px } }
-@media(max-width:979px){ .chat-note{ margin-top:8px; margin-bottom:6px; font-size:10.5px } }
+    a{color:inherit;text-decoration:none}
 
-/* RADIO (lofi) */
-.radio{display:flex; align-items:center; gap:16px; padding:14px}
-.radio .cover{width:60px; height:60px; border-radius:14px; background:#1f1029; border:1px solid var(--line); overflow:hidden; flex:0 0 auto}
-.radio .meta{flex:1; min-width:0}
-.radio h3{margin:0 0 4px; font-size:18px; font-family:Kalam, Inter, sans-serif}
-.radio .marquee{font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; position:relative}
-.radio .marquee span{display:inline-block; padding-left:100%; animation: marquee 14s linear infinite}
-@keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-100%)}}
-.radio .controls{display:flex; gap:10px}
-.btn{display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; border:2px solid rgba(255,170,230,.45); box-shadow:0 0 16px rgba(255,170,230,.35); background: rgba(255,170,230,.10); cursor:pointer; transition:.2s transform}
-.btn:hover{transform: scale(1.07)}
-.btn svg{width:20px; height:20px; fill:var(--pink)}
+    /* Pasek NEWS + badge LIVE */
+    .ticker{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(10px) saturate(120%);
+      background:linear-gradient(90deg, rgba(255,255,255,.35), rgba(255,255,255,.18));
+      border-bottom:1px solid rgba(255, 155, 213, .55);
+      min-height:56px; display:flex; align-items:center; gap:14px
+    }
+    .ticker .label{
+      margin-left:12px; font-weight:900; letter-spacing:.14em; font-size:12px; color:#ff66b4;
+      text-shadow:0 0 10px rgba(255,155,213,.8);
+      display:flex; flex-direction:column; align-items:flex-start; line-height:1
+    }
+    .liveBadge{margin-top:4px; font-size:12px; font-weight:800; display:flex; align-items:center; gap:8px}
+    .liveBadge .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .liveBadge.on{color:var(--live-red)}
+    .liveBadge.on .dot{background:var(--live-red); box-shadow:0 0 10px var(--live-red),0 0 20px var(--live-red); animation:blink 1s infinite}
+    .liveBadge.off{color:var(--offline)}
+    .liveBadge.off .dot{background:var(--offline)}
+    @keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
 
-/* PARTNERZY */
-.partners{display:grid; gap:16px}
-@media(min-width: 820px){ .partners{grid-template-columns: repeat(2, 1fr)} }
-.partner{display:flex; gap:16px; align-items:center; padding:14px}
-.partner img{width:64px; height:64px; object-fit:cover; border-radius:14px; border:1px solid var(--line)}
-.partner .meta{flex:1; min-width:0}
-.partner .cta{margin-left:auto}
-.button{border:1.5px solid rgba(255,170,230,.6); padding:10px 14px; border-radius:999px; box-shadow:0 0 16px rgba(255,170,230,.35); transition:transform .18s ease-out; background:rgba(255,170,230,.10)}
-.button:hover{transform:scale(1.06)}
+    .ticker .mask{overflow:hidden; flex:1}
+    .ticker .track{display:flex; width:max-content; animation: marquee2 28s linear infinite}
+    .ticker .row{display:flex; gap:26px; padding:0 12px}
+    .ticker .item{
+      opacity:.96; background: rgba(255,255,255,.45); color:#7a2f58;
+      padding:6px 12px; border-radius:999px; border:1px solid rgba(255,155,213,.45);
+      box-shadow:0 2px 14px rgba(255,118,189,.18)
+    }
+    @keyframes marquee2{ from{ transform: translateX(0)} to{ transform: translateX(-50%)} }
 
-/* Kontakt + footer */
-.contact{font-size:12px; color:var(--muted); text-align:center; line-height:1.8}
-.powered{margin-top:16px; position:relative; overflow:hidden; border-radius:var(--radius); text-align:center; padding:14px; font-size:12px; color:#ffe8f7; background: linear-gradient(180deg, rgba(255,170,230,.16), rgba(255,170,230,.08)); border:1px solid var(--line)}
-.powered::after{content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,170,230,.55), transparent); transform: translateX(-100%); animation: scan 4.5s infinite}
-@keyframes scan{0%{transform:translateX(-100%)} 60%{transform:translateX(100%)} 100%{transform:translateX(100%)}}
+    main{max-width:var(--maxw); margin:56px auto 120px; padding:0 18px}
 
-/* Splash */
-.splash{position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(800px 600px at 50% 20%, rgba(255,170,230,.10), transparent 60%), #120916; color:#fff; z-index:100}
-.splash .inner{text-align:center}
-.enter{ margin-top:20px; padding:14px 22px; border-radius:999px; border:2px solid rgba(255,170,230,.6); background: transparent; color:#fff; font-weight:800; letter-spacing:.06em; cursor:pointer; box-shadow:0 0 16px rgba(255,170,230,.6)}
-.enter:hover{ filter: drop-shadow(0 0 16px rgba(255,170,230,.85))}
-.no-scroll{overflow:hidden;height:100%}
+    /* LOGO pastel */
+    .logo{margin:46px auto 18px; text-align:center; position:relative; user-select:none}
+    .logo h1{
+      font-family: Comfortaa, Poppins, sans-serif;
+      font-size: clamp(42px, 8vw, 86px);
+      font-weight: 700; letter-spacing: .04em; color:#ff73bf;
+      text-shadow: var(--glow-strong);
+      filter: drop-shadow(0 4px 24px rgba(255,155,213,.35));
+    }
+    .sparkles{position:absolute; inset:0; pointer-events:none}
+    .sparkles i{
+      position:absolute; width:8px; height:8px; border-radius:50%;
+      background: var(--pink);
+      box-shadow: 0 0 8px var(--pink), 0 0 16px var(--lav);
+      animation: twinkle 2.6s ease-in-out infinite; opacity:.9
+    }
+    @keyframes twinkle{ 0%,100%{transform:scale(.6); opacity:.55} 50%{transform:scale(1.25); opacity:1} }
 
-/* Reveal */
-.reveal{opacity:0; transform: translateY(16px); transition: .6s ease}
-.reveal.visible{opacity:1; transform:none}
+    /* SOCIALS (pastel-chips) */
+    .socials{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin: 22px 0 40px}
+    .chip{
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,155,213,.55); background: rgba(255,255,255,.55);
+      color:#7a2f58; backdrop-filter: blur(10px) saturate(120%);
+      transition:.22s transform, .22s box-shadow
+    }
+    .chip:hover{transform:translateY(-2px) scale(1.05); box-shadow: var(--shadow-neon)}
+    .chip img{width:18px; height:18px; object-fit:contain}
 
-/* Mobile tweaks */
-@media(max-width: 600px){
-  main{margin:42px auto 90px; padding:0 14px}
-  .logo h1{font-size: clamp(36px, 10vw, 64px)}
-  .section{margin:32px 0}
-  .radio .cover{width:50px; height:50px}
-}
-</style>
+    /* Karty / grid */
+    .card{
+      background:var(--card); border:1px solid rgba(255,155,213,.45);
+      border-radius:var(--radius); box-shadow:0 12px 40px rgba(153,95,141,.25);
+      backdrop-filter: blur(10px) saturate(120%); overflow:hidden
+    }
+    .section{margin:40px 0}
+
+    .zone{
+      display:inline-block; margin:26px 0 10px; text-align:left; font-size:12px; font-weight:900;
+      letter-spacing:.22em; color:#7a2f58; padding:6px 10px; border:1px solid rgba(255,155,213,.6);
+      border-radius:999px; background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.4));
+      box-shadow: 0 0 14px rgba(255,155,213,.25)
+    }
+    .zone::before{
+      content:""; display:inline-block; width:10px; height:10px; margin-right:8px; border-radius:3px;
+      background: linear-gradient(180deg, var(--pink), var(--lav)); box-shadow:0 0 12px var(--pink)
+    }
+
+    /* STREAM + CHAT */
+    .grid{display:grid; gap:24px}
+    @media(min-width: 980px){ .grid.stream{grid-template-columns: 1.8fr 1fr} }
+    .frame{aspect-ratio:16/9; width:100%; border-radius:calc(var(--radius) - 2px); border:2px solid rgba(255,155,213,.75); box-shadow: var(--shadow-neon); overflow:hidden; background: #000}
+    .frame iframe{display:block; width:100%; height:100%; border:0}
+
+    /* Mini donate */
+    .mini-donate{
+      text-align:center; padding:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.28));
+      border-top:1px solid rgba(255,155,213,.45);
+      color:#7a2f58;
+    }
+    .mini-btn{
+      display:inline-block; font-size:13px; padding:10px 18px; border-radius:12px;
+      background: rgba(255,255,255,.6); border:1px solid rgba(255,155,213,.8);
+      color:#7a2f58; text-decoration:none; letter-spacing:.04em; font-weight:800;
+      box-shadow: 0 0 8px rgba(255,118,189,.18);
+      transition:.18s transform, .18s box-shadow;
+    }
+    .mini-btn:hover{ transform:translateY(-1px) scale(1.03); box-shadow: var(--shadow-neon); }
+    .pay-note{font-size:11px; color:#a76c93; margin-top:6px; line-height:1.35}
+
+    /* Notka pod czatem */
+    .chat-note{ font-size:11px; color:#a76c93; margin-top:-16px; margin-bottom:10px; }
+    @media(min-width:980px){ .chat-note{ grid-column:2; text-align:left; padding-left:4px; } }
+    @media(max-width:979px){ .chat-note{ margin-top:8px; margin-bottom:6px; font-size:10.5px } }
+
+    /* RADIO (kolory pastel) */
+    .radio{display:flex; align-items:center; gap:16px; padding:14px}
+    .radio .cover{width:56px; height:56px; border-radius:12px; background:#fff0f8; border:1px solid rgba(255,155,213,.55); overflow:hidden; flex: 0 0 auto}
+    .radio .meta{flex:1; min-width:0}
+    .radio h3{margin:0 0 4px; font-size:18px; color:#7a2f58}
+    .radio .marquee{font-size:13px; color:#a76c93; white-space:nowrap; overflow:hidden; position:relative}
+    .radio .marquee span{display:inline-block; padding-left:100%; animation: marquee 14s linear infinite}
+    @keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-100%)} }
+    .radio .controls{display:flex; gap:10px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%;
+      border:2px solid rgba(255,155,213,.85); box-shadow: var(--shadow-neon); background: rgba(255,255,255,.6); cursor:pointer; transition:.2s transform
+    }
+    .btn:hover{transform: scale(1.08)}
+    .btn svg{width:20px; height:20px; fill:var(--pink)}
+
+    /* PARTNERZY */
+    .partners{display:grid; gap:16px}
+    @media(min-width: 820px){ .partners{grid-template-columns: repeat(2, 1fr)} }
+    .partner{display:flex; gap:16px; align-items:center; padding:14px}
+    .partner img{width:60px; height:60px; object-fit:cover; border-radius:12px; border:1px solid rgba(255,155,213,.55); max-width:100%; background:#fff}
+    .partner .meta{flex:1; min-width:0}
+    .partner .cta{margin-left:auto}
+    .button{
+      border:1.5px solid rgba(255,155,213,.85); padding:10px 14px; border-radius:999px;
+      box-shadow: var(--shadow-neon); transition:transform .18s ease-out; background:rgba(255,255,255,.6); color:#7a2f58; font-weight:800
+    }
+    .button:hover{transform:scale(1.06)}
+    img{max-width:100%; height:auto}
+
+    /* KONTAKT + FOOTER */
+    .contact{font-size:12px; color:#a76c93; text-align:center; line-height:1.8}
+    .powered{
+      margin-top:16px; position:relative; overflow:hidden; border-radius:var(--radius); text-align:center;
+      padding:14px; font-size:12px; color:#7a2f58;
+      background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.35));
+      border:1px solid rgba(255,155,213,.55)
+    }
+    .powered::after{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(90deg, transparent, rgba(255,155,213,.45), transparent);
+      transform: translateX(-100%); animation: scan 4.5s infinite
+    }
+    @keyframes scan{ 0%{ transform: translateX(-100%)} 60%{ transform: translateX(100%)} 100%{ transform: translateX(100%)} }
+
+    /* Splash */
+    .splash{position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(800px 600px at 50% 20%, rgba(255,155,213,.12), transparent 60%), #fff1f7; color: #7a2f58; z-index:100}
+    .splash .inner{ text-align:center}
+    .enter{
+      margin-top:20px; padding:14px 22px; border-radius:999px; border:2px solid rgba(255,155,213,.6);
+      background: transparent; color:#7a2f58; font-weight:700; letter-spacing:.06em; cursor:pointer;
+      box-shadow: var(--shadow-neon)
+    }
+    .enter:hover{ filter: drop-shadow(0 0 16px rgba(255,155,213,.8))}
+    .no-scroll{overflow:hidden;height:100%}
+
+    .toast{
+      position: fixed; bottom:22px; right:22px; background: var(--card-strong); color:#7a2f58;
+      border:1px solid rgba(255,155,213,.55); padding:12px 14px; border-radius:14px;
+      box-shadow:0 10px 30px rgba(153,95,141,.25); display:flex; gap:10px; align-items:flex-start; max-width: 360px; z-index:40
+    }
+    .toast button{margin-left:auto; background:transparent; border:none; color:#a76c93; cursor:pointer; font-weight:700}
+
+    .reveal{opacity:0; transform: translateY(16px); transition: .6s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* Mobile */
+    @media(max-width: 980px){
+      .grid.stream{ grid-template-columns: 1fr; }
+      main{margin:42px auto 90px; padding:0 14px}
+      .logo h1{font-size: clamp(34px, 9vw, 58px)}
+      .zone{font-size:11px; letter-spacing:.18em}
+      .section{margin:32px 0}
+      .chip{padding:9px 12px}
+      .toast{max-width:calc(100% - 32px)}
+    }
+  </style>
 </head>
 <body class="no-scroll">
-<!-- Splash -->
-<div id="splash" class="splash">
-  <div class="inner">
-    <div class="logo" style="margin:0">
-      <h1 id="logoText">melapustelnik</h1>
-      <div class="subtitle">kliknij, aby wejść ✦</div>
-    </div>
-    <button id="enterBtn" class="enter">WEJDŹ</button>
-  </div>
-</div>
-
-<!-- News -->
-<div class="ticker">
-  <div class="label">NEWS</div>
-  <div class="mask">
-    <div id="tickerTrack" class="track">
-      <div id="tickerFeedA" class="row"></div>
-      <div id="tickerFeedB" class="row" aria-hidden="true"></div>
+  <!-- SPLASH -->
+  <div id="splash" class="splash">
+    <div class="inner">
+      <div class="logo" style="margin:0">
+        <h1 id="logoText">melapustelnik</h1>
+      </div>
+      <div style="opacity:.85">kliknij, aby wejść</div>
+      <button id="enterBtn" class="enter">WEJDŹ</button>
     </div>
   </div>
-</div>
 
-<main>
-  <!-- Logo -->
-  <div class="logo reveal">
-    <h1 id="mainLogo">melapustelnik</h1>
-    <div class="sparkles" id="sparkles"></div>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="label">
+      <div>NEWS</div>
+      <div id="liveBadge" class="liveBadge off"><span class="dot"></span> OFFLINE</div>
+    </div>
+    <div class="mask">
+      <div id="tickerTrack" class="track">
+        <div id="tickerFeedA" class="row" aria-hidden="false"></div>
+        <div id="tickerFeedB" class="row" aria-hidden="true"></div>
+      </div>
+    </div>
   </div>
 
-  <!-- Socials -->
-  <div id="socials" class="socials reveal"></div>
-
-  <!-- Stream + chat -->
-  <h2 class="zone reveal">STREFA STREAM</h2>
-  <section class="section grid stream reveal">
-    <div class="card">
-      <div class="frame">
-        <iframe id="twitch-embed" allowfullscreen></iframe>
-      </div>
-      <div class="mini-donate">
-        <a href="https://tipply.pl/@melamelaa" class="mini-btn" target="_blank" rel="noopener">Donate TIPPLY</a>
-        <div class="pay-note">Formy płatności: BLIK, Paysafecard, CashBill Przelew, PayPal, Revolut, BLIK „Płacę później”, Visa/Mastercard, SMS, SMS Full, SMS Plus.</div>
-      </div>
+  <main>
+    <!-- LOGO -->
+    <div class="logo reveal">
+      <h1 id="mainLogo">melapustelnik</h1>
+      <div class="sparkles" id="sparkles"></div>
     </div>
-    <div class="card">
-      <div class="frame" style="aspect-ratio:auto; height:100%">
-        <iframe id="twitch-chat"></iframe>
+
+    <!-- SOCIALS -->
+    <div id="socials" class="socials reveal"></div>
+
+    <!-- STREAM + CHAT -->
+    <h2 class="zone reveal">STREFA STREAM</h2>
+    <section class="section grid stream reveal">
+      <div class="card">
+        <div class="frame">
+          <iframe id="twitch-embed" allowfullscreen frameborder="0"></iframe>
+        </div>
+
+        <!-- Jeden przycisk DONATE + notka -->
+        <div class="mini-donate">
+          <a href="https://tipply.pl/@melamelaa" target="_blank" rel="noopener" class="mini-btn">Donate TIPPLY @melamelaa</a>
+          <div class="pay-note">
+            Dostępne metody płatności zobaczysz na stronie Tipply przy płatności ❤️
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="chat-note">Aby korzystać z czatu, zaloguj się na <a href="https://www.twitch.tv/" target="_blank" rel="noopener">Twitch.tv</a>.</div>
-  </section>
 
-  <!-- Radio -->
-  <h2 class="zone reveal">RADYJKO — LOFI / CHILL</h2>
-  <section class="section card reveal">
-    <div class="radio">
-      <div class="cover"><img id="radioCover" src="https://i.imgur.com/f3c8b0p.png" alt="okładka" style="width:100%;height:100%"></div>
-      <div class="meta">
-        <h3 id="radioTitle">Lofi Chill Beats</h3>
-        <div class="marquee"><span id="radioInfo">– mellow lofi • cozy anime vibes • study / relax –</span></div>
+      <div class="card">
+        <div class="frame" style="aspect-ratio:auto; height:100%">
+          <iframe id="twitch-chat" frameborder="0"></iframe>
+        </div>
       </div>
-      <div class="controls">
-        <button class="btn" id="playPause" aria-label="Odtwarzaj/Pauza">
-          <svg viewBox="0 0 24 24"><path id="playIcon" d="M8 5v14l11-7z"/></svg>
-        </button>
-        <button class="btn" id="mute" aria-label="Wycisz">
-          <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 0 1-2.1 3.8l1.4 1.4A6.5 6.5 0 0 0 19.5 12 6.5 6.5 0 0 0 15.8 6.8l-1.4 1.4A4.5 4.5 0 0 1 16.5 12z"/></svg>
-        </button>
+
+      <div class="chat-note">
+        Aby pisać na czacie, zaloguj się na <a href="https://www.twitch.tv/" target="_blank" rel="noopener">Twitch.tv</a>.
       </div>
-      <audio id="audio" preload="none"></audio>
+    </section>
+
+    <!-- RADIO (opcjonalnie możesz podmienić strumień) -->
+    <h2 class="zone reveal">RADYJKO</h2>
+    <section class="section card reveal">
+      <div class="radio">
+        <div class="cover"><img id="radioCover" src="https://i.imgur.com/IGjyCAy.png" alt="okładka" style="width:100%;height:100%"></div>
+        <div class="meta">
+          <h3 id="radioTitle">Radyjko</h3>
+          <div class="marquee"><span id="radioInfo">lo-fi / j-pop / chill ✨</span></div>
+        </div>
+        <div class="controls">
+          <button class="btn" id="playPause" aria-label="Odtwarzaj/Pauza">
+            <svg viewBox="0 0 24 24"><path id="playIcon" d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button class="btn" id="mute" aria-label="Wycisz">
+            <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 0 1-2.1 3.8l1.4 1.4A6.5 6.5 0 0 0 19.5 12 6.5 6.5 0 0 0 15.8 6.8l-1.4 1.4A4.5 4.5 0 0 1 16.5 12z"/></svg>
+          </button>
+        </div>
+        <audio id="audio" preload="none"></audio>
+      </div>
+    </section>
+
+    <!-- PARTNERZY -->
+    <h2 class="zone reveal">STREFA PARTNERÓW</h2>
+    <section class="section">
+      <div class="partners" id="partners"></div>
+    </section>
+
+    <!-- KONTAKT + FOOTER -->
+    <section class="section card reveal" style="padding:16px 18px">
+      <div class="contact">
+        <div style="font-weight:700; color:#7a2f58; letter-spacing:.12em; margin-bottom:6px">kontakt</div>
+        <div>- discord: <a id="contactDiscord" href="#" target="_blank" rel="noopener"></a></div>
+        <div>- e-mail: <a id="contactEmail" href="#"></a></div>
+      </div>
+      <div class="powered">Powered by <strong>snyuzii.xyz</strong></div>
+    </section>
+  </main>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast" hidden>
+    <div>
+      <strong>Hejka!</strong><br/>
+      Strona Meli jest w budowie (testy wyglądu ✨)
     </div>
-  </section>
+    <button id="closeToast">×</button>
+  </div>
 
-  <!-- Partnerzy -->
-  <h2 class="zone reveal">PARTNERZY</h2>
-  <section class="section">
-    <div class="partners" id="partners"></div>
-  </section>
+  <script>
+    // ---------- KONFIGURACJA DLA MELA ----------
 
-  <!-- Kontakt + footer -->
-  <section class="section card reveal" style="padding:16px 18px">
-    <div class="contact">
-      <div style="font-weight:800; color:#ffeaf6; letter-spacing:.12em; margin-bottom:6px">kontakt</div>
-      <div>- e-mail: <a id="contactEmail" href="#"></a></div>
-    </div>
-    <div class="powered">Powered by <strong>snyuzii.xyz</strong></div>
-  </section>
-</main>
+    const CONFIG = {
+      /* Jeśli chcesz tło zdjęciowe, odkomentuj i podmień:
+         backgroundImage: 'https://…/pastel-anime-stars.jpg',
+      */
+      logoText: 'melapustelnik',
+      news: [
+        'Nowe streamy na Twitchu – wpadaj! 💖',
+        'Discord ekipy: dołącz i pogadajmy! 🌸',
+        'IG/TikTok/X: @melapustelnik — follow!',
+        'Radyjko: lo-fi & kawaii vibez 🎧'
+      ],
+      socials: [
+        {label:'Twitch',   icon:'https://simpleicons.org/icons/twitch.svg',   url:'https://www.twitch.tv/melapustelnik'},
+        {label:'Instagram',icon:'https://simpleicons.org/icons/instagram.svg',url:'https://www.instagram.com/melapustelnik/'},
+        {label:'TikTok',   icon:'https://simpleicons.org/icons/tiktok.svg',   url:'https://www.tiktok.com/@melapustelnik?_t=8nWbD6rlbVp&_r=1'},
+        {label:'X',        icon:'https://simpleicons.org/icons/x.svg',        url:'https://x.com/melapustelnik?s=21'},
+        {label:'Discord',  icon:'https://simpleicons.org/icons/discord.svg',  url:'https://discord.gg/FA8P7w6zWN'}
+      ],
+      radio: {
+        streamUrl:'https://stream.nightride.fm/chillsynth.mp3', // podmień na własny jeśli masz
+        cover:'https://i.imgur.com/IGjyCAy.png',
+        title:'Radyjko',
+        info:'lo-fi / j-pop / chill ✨'
+      },
+      partners: [
+        {
+          logo:'https://www.google.com/s2/favicons?domain=opera.com&sz=128',
+          name:'OPERA GX',
+          desc:'Dołącz do GX Creators.',
+          cta:'Sprawdź',
+          url:'https://www.opera.com/pl/gx/gx-creators'
+        },
+        {
+          logo:'https://www.google.com/s2/favicons?domain=yumisu.pl&sz=128',
+          name:'YUMISU 2050 Magnetic Cloud Pink',
+          desc:'Wygodny fotel biurowy — różowy cloud 💗',
+          cta:'Kup fotel',
+          url:'https://www.yumisu.pl/product/fotel-biurowy-yumisu-2050-magnetic-material-cloud-pink/'
+        },
+        {
+          logo:'https://www.google.com/s2/favicons?domain=acegear.pl&sz=128',
+          name:'ACEGEAR',
+          desc:'Sklep z akcesoriami — kod MELA (-5%).',
+          cta:'Sklep + kod MELA',
+          url:'https://acegear.pl/'
+        }
+      ],
+      contact:{ discord:'discord.gg/FA8P7w6zWN', email:'mela@sayflu.com' },
 
-<script>
-/* -------- CONFIG -------- */
-const CONFIG = {
-  backgroundImage: 'https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?q=80&w=2100&auto=format&fit=crop',
-  logoText: 'melapustelnik',
-  news: [
-    'Witaj w pastelowym świecie ✦',
-    'Follow: Instagram / TikTok / X / Discord',
-    'Lofi chill gra po kliknięciu wejścia 🎧',
-    'Partnerzy: Opera GX • YUMISU • ACEGEAR',
-  ],
-  socials: [
-    {label:'Instagram', icon:'https://simpleicons.org/icons/instagram.svg', url:'https://www.instagram.com/melapustelnik/'},
-    {label:'TikTok', icon:'https://simpleicons.org/icons/tiktok.svg', url:'https://www.tiktok.com/@melapustelnik?_t=8nWbD6rlbVp&_r=1'},
-    {label:'X', icon:'https://simpleicons.org/icons/x.svg', url:'https://x.com/melapustelnik?s=21'},
-    {label:'Discord', icon:'https://simpleicons.org/icons/discord.svg', url:'https://discord.gg/FA8P7w6zWN'},
-    {label:'Twitch', icon:'https://simpleicons.org/icons/twitch.svg', url:'https://www.twitch.tv/melapustelnik'}
-  ],
-  twitch: { channel: 'melapustelnik', parents: ['mela.snyuzii.xyz','snyuzii.xyz','www.snyuzii.xyz'] },
-  radio: {
-    streamUrl: 'https://stream.nightride.fm/lofi.mp3',
-    cover: 'https://i.imgur.com/f3c8b0p.png',
-    title: 'Lofi Chill Beats',
-    info: '– mellow lofi • cozy anime vibes • study / relax –'
-  },
-  partners: [
-    {logo:'https://i.imgur.com/dX1o3lI.png', name:'Opera GX', desc:'Dołącz do GX Creators – przeglądarka dla graczy.', cta:'Sprawdź', url:'https://www.opera.com/pl/gx/gx-creators'},
-    {logo:'https://i.imgur.com/9tGkTn4.png', name:'YUMISU 2050 Cloud Pink', desc:'Różowy fotel biurowy – magnetyczny materiał.', cta:'Zobacz', url:'https://www.yumisu.pl/product/fotel-biurowy-yumisu-2050-magnetic-material-cloud-pink/'},
-    {logo:'https://i.imgur.com/0wq2pQZ.png', name:'ACEGEAR', desc:'Akcesoria gamingowe — kod: MELA (-5%).', cta:'Sklep', url:'https://acegear.pl/'}
-  ],
-  contact: { email: 'mela@sayflu.com' },
-  sparkles: 26
-};
+      /* Pokazuj powitalny „toast”? */
+      showWelcomeToast:true,
 
-/* -------- INIT UI -------- */
-document.documentElement.style.setProperty('--bg-image', `url('${CONFIG.backgroundImage}')`);
-const mainLogo = document.getElementById('mainLogo');
-const logoText = document.getElementById('logoText');
-mainLogo.textContent = CONFIG.logoText; logoText.textContent = CONFIG.logoText;
+      /* Ile „iskier” przy logo */
+      sparkleCount:22,
 
-/* ticker */
-const feedA = document.getElementById('tickerFeedA');
-const feedB = document.getElementById('tickerFeedB');
-const tickerHtml = CONFIG.news.map(t=>`<div class="item">${t}</div>`).join('');
-feedA.innerHTML = tickerHtml; feedB.innerHTML = tickerHtml;
+      /* WYMAGANE przez Twitch: lista dozwolonych parent domen (Twoja domena!) */
+      twitchParents:['mela.snyuzii.xyz', 'www.mela.snyuzii.xyz'],
 
-/* socials */
-document.getElementById('socials').innerHTML = CONFIG.socials.map(s=>`
-  <a class="chip" href="${s.url}" target="_blank" rel="noopener">
-    <img src="${s.icon}" alt="${s.label}"/><span>${s.label}</span>
-  </a>`).join('');
+      /* Kanał Twitch do osadzenia */
+      twitch:{ channelLogin:'melapustelnik', refreshMs:60000 },
 
-/* twitch embeds */
-const parentsParam = CONFIG.twitch.parents.join('&parent=');
-document.getElementById('twitch-embed').src =
-  `https://player.twitch.tv/?channel=${CONFIG.twitch.channel}&parent=${parentsParam}&muted=true`;
-document.getElementById('twitch-chat').src =
-  `https://www.twitch.tv/embed/${CONFIG.twitch.channel}/chat?parent=${parentsParam}&darkpopout`;
+      /* Badge LIVE — prosty tryb bez tokenu (tylko embed ping)
+         -> jeśli chcesz prawdziwy status z API, zrób to po stronie serwera. */
+      liveBadgeMode:'simple' // 'simple' | 'off'
+    };
 
-/* radio */
-const audio = document.getElementById('audio');
-audio.src = CONFIG.radio.streamUrl;
-document.getElementById('radioTitle').textContent = CONFIG.radio.title;
-document.getElementById('radioInfo').textContent = CONFIG.radio.info;
-document.getElementById('radioCover').src = CONFIG.radio.cover;
+    // ---------- INIT UI ----------
+    // (jeśli ustawisz CONFIG.backgroundImage – dołóż go do tła)
+    if (CONFIG.backgroundImage) {
+      document.body.style.backgroundImage =
+        `radial-gradient(1200px 800px at 70% 10%, rgba(255,255,255,.10), transparent 60%), \
+         radial-gradient(900px 700px at 10% 30%, rgba(255,155,213,.16), transparent 60%), \
+         url("${CONFIG.backgroundImage}")`;
+      document.body.style.backgroundSize = 'auto, auto, cover';
+      document.body.style.backgroundRepeat = 'no-repeat, no-repeat, no-repeat';
+      document.body.style.backgroundPosition = 'center';
+    }
 
-/* partnerzy */
-document.getElementById('partners').innerHTML = CONFIG.partners.map(p=>`
-  <a class="card partner reveal" href="${p.url}" target="_blank" rel="noopener">
-    <img src="${p.logo}" alt="${p.name}"/>
-    <div class="meta">
-      <div style="font-weight:800; letter-spacing:.04em">${p.name}</div>
-      <div style="font-size:13px; color:#f6dff3">${p.desc}</div>
-    </div>
-    <div class="cta button">${p.cta}</div>
-  </a>`).join('');
+    const mainLogo = document.getElementById('mainLogo');
+    const logoText = document.getElementById('logoText');
+    mainLogo.textContent = CONFIG.logoText; logoText.textContent = CONFIG.logoText;
 
-/* kontakt */
-const mail = document.getElementById('contactEmail');
-mail.textContent = CONFIG.contact.email;
-mail.href = 'mailto:' + CONFIG.contact.email;
+    // NEWS
+    const feedA = document.getElementById('tickerFeedA');
+    const feedB = document.getElementById('tickerFeedB');
+    const tickerHtml = CONFIG.news.map(t=>`<div class="item">${t}</div>`).join('');
+    feedA.innerHTML = tickerHtml; feedB.innerHTML = tickerHtml;
 
-/* sparkles */
-const sparkWrap = document.getElementById('sparkles');
-for(let i=0;i<CONFIG.sparkles;i++){
-  const s = document.createElement('i');
-  s.style.left = Math.random()*100 + '%';
-  s.style.top = (Math.random()*70 + 10) + '%';
-  s.style.animationDelay = (Math.random()*2)+'s';
-  sparkWrap.appendChild(s);
-}
+    // Socials
+    document.getElementById('socials').innerHTML = CONFIG.socials.map(s=>`
+      <a class="chip" href="${s.url}" target="_blank" rel="noopener">
+        <img src="${s.icon}" alt="${s.label}"/><span>${s.label}</span>
+      </a>`).join('');
 
-/* splash (klik -> odtwarzanie) */
-document.getElementById('enterBtn').addEventListener('click', async () => {
-  document.getElementById('splash').style.opacity = '0';
-  setTimeout(()=> document.getElementById('splash').remove(), 320);
-  document.body.classList.remove('no-scroll');
-  try{ await audio.play(); }catch(e){}
-});
+    // Twitch player + chat (dynamic parent=)
+    const parentsParam = CONFIG.twitchParents.map(encodeURIComponent).join('&parent=');
+    const channel = encodeURIComponent(CONFIG.twitch.channelLogin);
+    document.getElementById('twitch-embed').src =
+      `https://player.twitch.tv/?channel=${channel}&parent=${parentsParam}&muted=true`;
+    document.getElementById('twitch-chat').src =
+      `https://www.twitch.tv/embed/${channel}/chat?parent=${parentsParam}&darkpopout`;
 
-/* radio controls */
-const playBtn = document.getElementById('playPause');
-const muteBtn = document.getElementById('mute');
-const playIcon = document.getElementById('playIcon');
-let playing = false;
-const setPlayIcon=()=>playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
-playBtn.addEventListener('click', async()=>{
-  if(!playing){ await audio.play(); playing = true; } else { audio.pause(); playing = false; }
-  setPlayIcon();
-});
-muteBtn.addEventListener('click', ()=>{ audio.muted = !audio.muted; muteBtn.style.opacity = audio.muted? .6 : 1; });
-audio.addEventListener('play', ()=>{ playing=true; setPlayIcon(); });
-audio.addEventListener('pause', ()=>{ playing=false; setPlayIcon(); });
+    // LIVE badge — tryb „simple”: jeżeli iframe się ładuje poprawnie, pokaż „LIVE?” kiedy player zgłosi event "playing" (heurystyka)
+    (function(){
+      const badge = document.getElementById('liveBadge');
+      if(CONFIG.liveBadgeMode !== 'simple'){ return; }
+      const player = document.getElementById('twitch-embed');
+      // Jeżeli player zacznie grać audio (muted=true), nie złapiemy audio, ale Twitch nada klasę w iframe. Prosty timer — kiedy czat i player się ładują, ustaw UNKNOWN->OFFLINE.
+      setTimeout(()=>{ badge.className='liveBadge off'; badge.innerHTML='<span class="dot"></span> OFFLINE'; }, 4000);
+      // Dodatkowa heurystyka: ping do playera (niezawodne nie jest, ale lekkie)
+      window.addEventListener('message', (e)=>{
+        if (typeof e.data === 'string' && e.data.includes('Twitch.Player.PLAYING')) {
+          badge.className='liveBadge on'; badge.innerHTML='<span class="dot"></span> LIVE';
+        }
+      });
+    })();
 
-/* reveal */
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+    // RADIO
+    const audio = document.getElementById('audio');
+    audio.src = CONFIG.radio.streamUrl;
+    document.getElementById('radioTitle').textContent = CONFIG.radio.title;
+    document.getElementById('radioInfo').textContent = CONFIG.radio.info;
+    document.getElementById('radioCover').src = CONFIG.radio.cover;
 
-/* delikatny ruch tła (1–5% zakresu) */
-(function(){
-  const intensity = 0.03; // ~3% ruchu
-  let targetX = 0, targetY = 0, curX = 0, curY = 0;
-  function apply(){ 
-    curX += (targetX - curX) * 0.06;
-    curY += (targetY - curY) * 0.06;
-    document.body.style.backgroundPosition = `${50 + curX*intensity}% ${50 + curY*intensity}%`;
-    requestAnimationFrame(apply);
-  }
-  window.addEventListener('mousemove', (e)=>{
-    const cx = window.innerWidth/2, cy = window.innerHeight/2;
-    targetX = (e.clientX - cx) / cx;
-    targetY = (e.clientY - cy) / cy;
-  });
-  window.addEventListener('scroll', ()=>{
-    const y = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
-    targetY = (y - .5) * 2;
-  }, {passive:true});
-  apply();
-})();
-</script>
+    // PARTNERZY
+    document.getElementById('partners').innerHTML = CONFIG.partners.map(p=>`
+      <a class="card partner reveal" href="${p.url}" target="_blank" rel="noopener">
+        <img src="${p.logo}" alt="${p.name}"/>
+        <div class="meta">
+          <div style="font-weight:800; letter-spacing:.02em; color:#7a2f58">${p.name}</div>
+          <div style="font-size:13px; color:#a76c93">${p.desc}</div>
+        </div>
+        <div class="cta button">${p.cta}</div>
+      </a>`).join('');
+
+    // KONTAKT
+    const disc = document.getElementById('contactDiscord');
+    const mail = document.getElementById('contactEmail');
+    disc.textContent = CONFIG.contact.discord;
+    disc.href = 'https://' + CONFIG.contact.discord;
+    mail.textContent = CONFIG.contact.email;
+    mail.href = 'mailto:' + CONFIG.contact.email;
+
+    // Sparkles ✨
+    const sparkWrap = document.getElementById('sparkles');
+    for(let i=0;i<CONFIG.sparkleCount;i++){
+      const s = document.createElement('i');
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = (Math.random()*70 + 10) + '%';
+      s.style.animationDelay = (Math.random()*2)+'s';
+      // miks róż+lawenda dla każdej iskry
+      const glow1 = 6 + Math.random()*10;
+      const glow2 = 12 + Math.random()*24;
+      s.style.background = Math.random() < .5 ? 'var(--pink)' : 'var(--lav)';
+      s.style.boxShadow = `0 0 ${glow1}px var(--pink), 0 0 ${glow2}px var(--lav)`;
+      sparkWrap.appendChild(s);
+    }
+
+    // Splash
+    const splash = document.getElementById('splash');
+    document.getElementById('enterBtn').addEventListener('click', async () => {
+      splash.style.opacity = '0';
+      setTimeout(()=> splash.remove(), 320);
+      document.body.classList.remove('no-scroll');
+      try{ await audio.play(); }catch(e){}
+    });
+
+    // Radio controls
+    const playBtn = document.getElementById('playPause');
+    const muteBtn = document.getElementById('mute');
+    const playIcon = document.getElementById('playIcon');
+    let playing = false;
+    const setPlayIcon=()=>playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
+    playBtn.addEventListener('click', async()=>{
+      if(!playing){ await audio.play(); playing = true; } else { audio.pause(); playing = false; }
+      setPlayIcon();
+    });
+    muteBtn.addEventListener('click', ()=>{ audio.muted = !audio.muted; muteBtn.style.opacity = audio.muted? .6 : 1; });
+    audio.addEventListener('play', ()=>{ playing=true; setPlayIcon(); });
+    audio.addEventListener('pause', ()=>{ playing=false; setPlayIcon(); });
+
+    // Reveal animacje
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Toast
+    const toast = document.getElementById('toast');
+    const closeToast = document.getElementById('closeToast');
+    if(CONFIG.showWelcomeToast && !sessionStorage.getItem('toastSeen')){
+      toast.hidden = false;
+      closeToast.onclick = () => { toast.remove(); sessionStorage.setItem('toastSeen','1'); };
+    }
+
+    // Lekki parallax (wyłączony na dotyku)
+    (function(){
+      const body = document.body;
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if(isTouch) return;
+      let rafId = null, targetX = 50, targetY = 50;
+      function onMove(e){
+        const x = (e.clientX / window.innerWidth - 0.5) * 22;
+        const y = (e.clientY / window.innerHeight - 0.5) * 16;
+        targetX = 50 + x; targetY = 50 + y;
+        if(!rafId) rafId = requestAnimationFrame(()=>{ rafId=null; body.style.backgroundPosition = `${targetX}% ${targetY}%`; });
+      }
+      document.addEventListener('mousemove', onMove);
+    })();
+  </script>
 </body>
 </html>
